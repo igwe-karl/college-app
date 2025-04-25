@@ -25,5 +25,5 @@ const nextConfig = {
   },
 };
 
-module.exports = withImages(nextConfig);
 
+module.exports = nextConfig;
