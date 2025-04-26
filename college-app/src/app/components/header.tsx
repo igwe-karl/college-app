@@ -11,7 +11,6 @@ import { IconButton } from "./iconButton";
 
 const Header = () => {
   const router = useRouter();
-  const { currentUser } = useAuth();
 
   const handleSignOut = async () => {
     await doSignOut();
