@@ -2,7 +2,7 @@
 
 import NewsTab from "@/app/components/newsTab";
 import { useRouter, useSearchParams, useParams } from "next/navigation";
-import TransImage from "/Users/chigoziecalistusigwe/Documents/CRTA/college-app/college-app/public/assets/image/news.jpeg";
+// import TransImage from "/Users/chigoziecalistusigwe/Documents/CRTA/college-app/college-app/public/assets/image/news.jpeg";
 
 const NewsPage = () => {
   const searchParams = useSearchParams();
@@ -52,14 +52,14 @@ const NewsPage = () => {
         <div className="col-span-2">
           {" "}
           this is the individual news page
-          <NewsTab
+          {/* <NewsTab
             // link={`/news/${item.id}`}
             className="mt-4"
             key={news?.id}
             image={TransImage}
             title={news?.title}
             description={news?.description}
-          />
+          /> */}
         </div>
         <div className="col-span-1 text-black"> news page</div>
       </div>
