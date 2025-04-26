@@ -1,5 +1,5 @@
 import NewsTab from "../components/newsTab";
-import TransImage from "/Users/chigoziecalistusigwe/Documents/CRTA/college-app/college-app/public/assets/image/news.jpeg";
+// import TransImage from "/Users/chigoziecalistusigwe/Documents/CRTA/college-app/college-app/public/assets/image/news.jpeg";
 // /Users/chigoziecalistusigwe/Documents/CRTA/college-app/college-app/public/assets/image/news.jpeg
 const Home = () => {
   const items = [
@@ -41,7 +41,7 @@ const Home = () => {
       </p>
       <div className="mt-10 grid grid-cols-2 gap-4 w-[80%]">
         <div className="col-span-1">
-          {items.map((item) => (
+          {/* {items.map((item) => (
             <NewsTab
               isPage={true}
               link={`/news/${item.id}`}
@@ -51,10 +51,10 @@ const Home = () => {
               title={item.title}
               description={item.description}
             />
-          ))}
+          ))} */}
         </div>
         <div className="col-span-1">
-          {items.map((item) => (
+          {/* {items.map((item) => (
             <NewsTab
               isPage={true}
               link={`/news/${item.id}`}
@@ -64,7 +64,7 @@ const Home = () => {
               title={item.title}
               description={item.description}
             />
-          ))}
+          ))} */}
         </div>
       </div>
 

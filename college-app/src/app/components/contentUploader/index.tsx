@@ -3,8 +3,7 @@
 import Icon from "@mdi/react";
 import React, { useMemo, useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
-import { mdiChevronDown, mdiCloudUploadOutline } from "@mdi/js";
-// import { uploadFile, uploadFileCloudinary } from '@services/file.service';
+import { mdiCloudUploadOutline } from "@mdi/js";
 import classNames from "classnames";
 import { Spinner } from "../spinner";
 import { Label } from "@/components/ui/label";

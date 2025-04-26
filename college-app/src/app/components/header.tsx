@@ -1,13 +1,12 @@
 "use client";
 
 import { mdiFacebook, mdiInstagram, mdiYoutube } from "@mdi/js";
-import Icon from "@mdi/react";
 import { doSignOut } from "@/app/firebase/auth";
 import { useAuth } from "@/context/authContext";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import logo from "/Users/chigoziecalistusigwe/Documents/CRTA/college-app/college-app/public/assets/image/logo.jpg";
+// import logo from "/Users/chigoziecalistusigwe/Documents/CRTA/college-app/college-app/public/assets/image/logo.jpg";
 import { IconButton } from "./iconButton";
 
 const Header = () => {
@@ -67,7 +66,7 @@ const Header = () => {
     <div className="flex flex-row items-center justify-between bg-black p-4">
       <div className="flex flex-row items-center justify-start p-4">
         {/* <p className="text-4xl font-bold text-black">CRT</p> */}
-        <Image src={logo} alt="logo" width={120} height={120} />
+        {/* <Image src={logo} alt="logo" width={120} height={120} /> */}
       </div>
       <div>
         <ul className="flex flex-row items-center justify-start p-4 text-white gap-4 cursor-pointer">

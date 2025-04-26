@@ -4,7 +4,6 @@ import { Textarea } from "../components/textArea";
 const Home = () => {
   return (
     <div className="flex flex-col items-center min-h-screen bg-white py-10 ">
-      {/* <Header /> */}
       <h1 className="text-4xl font-bold text-black">Upload Content</h1>
       <p className="text-sm font-bold text-orange-500">
         This is a page to help you plan your college road trip, news,
