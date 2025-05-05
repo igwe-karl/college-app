@@ -1,6 +1,6 @@
 "use client";
 
-import { mdiFacebook, mdiInstagram, mdiYoutube } from "@mdi/js";
+import { mdiFacebook, mdiInstagram, mdiSearchWeb, mdiYoutube } from "@mdi/js";
 import { doSignOut } from "@/app/firebase/auth";
 import { useAuth } from "@/context/authContext";
 import { Button } from "@/components/ui/button";
@@ -40,34 +40,18 @@ const Header = () => {
     },
   ];
 
-  const iconLinks = [
-    {
-      id: 1,
-      icon: mdiInstagram,
-      link: "https://www.instagram.com/crtafrica/?hl=en",
-      iconColor: "bg-red-500",
-    },
-    {
-      id: 2,
-      icon: mdiYoutube,
-      link: "https://www.youtube.com/channel/UC8-888888888888888888",
-      iconColor: "bg-red-500",
-    },
-    {
-      id: 3,
-      icon: mdiFacebook,
-      link: "https://web.facebook.com/search/top?q=crtafrica",
-      iconColor: "bg-blue-500",
-    },
-  ];
-
   return (
-    <div className="flex flex-row items-center justify-between bg-black p-4">
+    <div className="flex flex-row items-center justify-between bg-orange-500 px-4 py-10 ">
       <div className="flex flex-row items-center justify-start p-4">
         {/* <p className="text-4xl font-bold text-black">CRT</p> */}
-        {/* <Image src={logo} alt="logo" width={120} height={120} /> */}
+        <Image
+          src={"/assets/image/logo.jpg"}
+          alt="logo"
+          width={80}
+          height={80}
+        />
       </div>
-      <div>
+      {/* <div>
         <ul className="flex flex-row items-center justify-start p-4 text-white gap-4 cursor-pointer">
           {links.map((link) => (
             <li key={link.id} onClick={() => router.push(link.link)}>
@@ -75,25 +59,26 @@ const Header = () => {
             </li>
           ))}
         </ul>
+      </div> */}
+      <div className="flex flex-row items-start justify-start p-4 space-x-4">
+        <div>
+          <p className="text-white text-5xl font-bold ">
+            Welcome to College Road Trip Africa
+          </p>
+          <p className="text-white text-sm italic mt-2">
+            Welcome to the home of college news, gossips and information
+          </p>
+        </div>
+        <div>
+          <IconButton path={mdiSearchWeb}></IconButton>
+        </div>
       </div>
       <div className="flex flex-row items-center justify-end p-4 space-x-4">
-        <div className="flex flex-row items-center justify-end cursor-pointer gap-2">
-          {iconLinks.map((icon) => (
-            <IconButton
-              path={icon.icon}
-              size={1.5}
-              iconColor={icon.iconColor}
-              onClick={() => window.open(icon.link, "_blank")}
-              // spin
-            />
-          ))}
-        </div>
-        {/* {currentUser?.email && ( */}
-          <div>
-            <Button variant="destructive" onClick={handleSignOut}>
-              Sign out
-            </Button>
-          </div>
+        {/* <div>
+          <Button variant="destructive" onClick={handleSignOut}>
+            Sign out
+          </Button>
+        </div> */}
         {/* )} */}
       </div>
     </div>

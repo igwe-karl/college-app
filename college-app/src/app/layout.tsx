@@ -20,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <AuthProvider>
-          <main className="min-h-screen">{children}</main>
-        </AuthProvider>
-        <Footer />
+        <div className="min-h-screen">
+          <Header />
+          <AuthProvider>
+            <main className="min-h-screen">{children}</main>
+          </AuthProvider>
+          <Footer />
+        </div>
       </body>
     </html>
   );
