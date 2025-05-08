@@ -23,7 +23,6 @@ export default function Home() {
           hello and welcome to the app
         </div>
       )} */}
-
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8 ">
         <div className="col-span-2">
           <NewsTab
@@ -35,7 +34,7 @@ export default function Home() {
           />
 
           <NewsTab
-            image={"/assets/image/news.jpeg"}
+            image={"/assets/image/trans.webp"}
             title="News that will make you cry"
             description="News that will make you cry and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives"
             imageWidth={400}
@@ -52,7 +51,7 @@ export default function Home() {
           />
 
           <NewsTab
-            image={"/assets/image/news.jpeg"}
+            image={"/assets/image/trans.webp"}
             title="News that will make you cry"
             description="News that will make you cry and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives"
             imageWidth={400}

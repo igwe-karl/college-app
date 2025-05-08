@@ -2,8 +2,6 @@
 
 import { mdiFacebook, mdiInstagram, mdiSearchWeb, mdiYoutube } from "@mdi/js";
 import { doSignOut } from "@/app/firebase/auth";
-import { useAuth } from "@/context/authContext";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { IconButton } from "./iconButton";
@@ -40,7 +38,10 @@ const Header = () => {
   ];
 
   return (
-    <div className="flex flex-row items-center justify-between bg-orange-500 px-4 py-10 ">
+    <div
+      style={{ backgroundImage: 'url("/assets/image/simba.png")' }}
+      className="flex flex-row items-center justify-between bg-orange-500 px-4 py-20 w-full"
+    >
       <div className="flex flex-row items-center justify-start p-4">
         {/* <p className="text-4xl font-bold text-black">CRT</p> */}
         <Image
