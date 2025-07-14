@@ -21,6 +21,8 @@ const nextConfig = {
       "terminal-static-file.s3.amazonaws.com",
       "github.com",
       "uploads-ssl.webflow.com",
+      "www.youtube.com",
+      "www.youtube-nocookie.com",
     ],
   },
 };

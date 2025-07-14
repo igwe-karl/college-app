@@ -1,13 +1,76 @@
 "use client";
 
 import { useAuth } from "@/app/context/authContext";
-import Image from "next/image";
 import NewsTab from "./components/newsTab";
+import PopularTab from "./components/popularTab";
 
 export default function Home() {
   const { currentUser } = useAuth();
 
   console.log("currentUser", currentUser);
+
+  const videoUrls = [
+    {
+      title:
+        "Drama Beyond the Stage: NYSC Wahala, Attendance Games & Theatre Induction Palava.",
+      description:
+        "this piece dives into the real-life drama surrounding theatre art inductions, NYSC uncertainties, and the comical chaos of attendance politics in schools.",
+      image: "https://www.youtube.com/embed/hHIKgqFX0C8?si=fQcB0_6nyHbvYTSe",
+    },
+    {
+      title: "Theatre Art Induction: The Drama of First Impressions",
+      description:
+        "From the moment they step onto the stage, the first impression is everything.",
+      image: "https://www.youtube.com/embed/ouYUsj_Z4Ho?si=Ob-XYQ6J4InisAt8",
+    },
+
+    {
+      title: "News that will make you laugh",
+      description:
+        "College Road Trip is a Magazine Campus Content targeted at African youths. It is a weekly highlight of Campus activities - News, Fashion, Music, Life Style and more",
+      image: "https://www.youtube.com/embed/JIrBOPBCTpw?si=96cx3JT4TI-W5Ay8",
+    },
+    {
+      title: "How to spot a fresher",
+      description: "How to spot a fresher in the university",
+      image: "https://www.youtube.com/embed/9rsSHZtESsY?si=imAKIawqyiaQQi5u",
+    },
+  ];
+
+  const news = [
+    {
+      title: "Nigeria's Former President is dead",
+      description:
+        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
+      image: "/assets/image/bubu.JPG",
+    },
+    {
+      title: "What was special for you in school?",
+      description:
+        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
+      image: "/assets/image/simba.png",
+    },
+    {
+      title: "Who/what/where?",
+      description:
+        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
+      image: "/assets/image/trans.webp",
+    },
+
+    {
+      title: "Asuu strike again?",
+      description:
+        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "Nigeria's Former President is dead",
+      description:
+        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
+      // image: "/assets/image/bubu.jpeg",
+    },
+  ];
+
   return (
     <div className=" min-h-screen py-20 px-20">
       {/* {currentUser ? (
@@ -24,66 +87,33 @@ export default function Home() {
         </div>
       )} */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8 ">
-        <div className="col-span-2">
-          <NewsTab
-            image={"/assets/image/news.jpeg"}
-            title="News that will make you laugh"
-            description="News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives"
-            imageWidth={400}
-            imageHeight={400}
-          />
-
-          <NewsTab
-            image={"/assets/image/trans.webp"}
-            title="News that will make you cry"
-            description="News that will make you cry and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives"
-            imageWidth={400}
-            imageHeight={400}
-          />
+        <div className="md:col-span-4">
+          <div className="grid grid-cols-2 gap-4">
+            {videoUrls.map((url, index) => (
+              <PopularTab
+                key={index}
+                className="mb-4"
+                image={url.image}
+                title={url.title}
+                description={url.description}
+              />
+            ))}
+          </div>
         </div>
-        <div className="col-span-2">
-          <NewsTab
-            image={"/assets/image/news.jpeg"}
-            title="News that will make you laugh"
-            description="News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives"
-            imageWidth={400}
-            imageHeight={400}
-          />
 
-          <NewsTab
-            image={"/assets/image/trans.webp"}
-            title="News that will make you cry"
-            description="News that will make you cry and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives"
-            imageWidth={400}
-            imageHeight={400}
-          />
-        </div>
-        <div>
-          <p className="text-2xl font-bold text-center mb-4 bg-orange-500 text-white rounded-md p-2">
-            Popular News
+        <div className="col-span-1">
+          <p className="text-2xl font-bold text-center bg-orange-500 text-white rounded-t-md p-2">
+            Highlights
           </p>
-          <div className="flex flex-col gap-4">
-            <NewsTab
-              image={"/assets/image/news.jpeg"}
-              title="News that will make you laugh"
-              description="News that will make you "
-              imageWidth={100}
-              imageHeight={100}
-            />
-            <NewsTab
-              image={"/assets/image/news.jpeg"}
-              title="News that will make you laugh"
-              description="News that will make you "
-              imageWidth={100}
-              imageHeight={100}
-            />
-            <NewsTab
-              image={"/assets/image/news.jpeg"}
-              title="News that will make you laugh"
-              description="News that will make you "
-              imageWidth={100}
-              imageHeight={100}
-            />
+          <div className="flex flex-col gap-">
+            {news.map((item, index) => (
+              <NewsTab
+                key={index}
+                image={item.image}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ export default function Footer() {
     {
       id: 2,
       icon: mdiYoutube,
-      link: "https://www.youtube.com/channel/UC8-888888888888888888",
+      link: "https://youtube.com/@crtafrica9710?si=0dyNNzZner_VHkT8",
       iconColor: "bg-red-500",
     },
     {
