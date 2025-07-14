@@ -40,29 +40,20 @@ const Header = () => {
   return (
     <div
       style={{ backgroundImage: 'url("/assets/image/simba.png")' }}
-      className="flex flex-row items-center justify-between bg-orange-500 px-4 py-20 w-full"
+      className="flex sm:flex-col flex-row items-center justify-between bg-orange-500 px-4 py-20 w-full"
     >
       <div className="flex flex-row items-center justify-start p-4">
         {/* <p className="text-4xl font-bold text-black">CRT</p> */}
-        <Image
+        {/* <Image
           src={"/assets/image/logo.jpg"}
           alt="logo"
           width={80}
           height={80}
-        />
+        /> */}
       </div>
-      {/* <div>
-        <ul className="flex flex-row items-center justify-start p-4 text-white gap-4 cursor-pointer">
-          {links.map((link) => (
-            <li key={link.id} onClick={() => router.push(link.link)}>
-              {link.title}
-            </li>
-          ))}
-        </ul>
-      </div> */}
       <div className="flex flex-row items-start justify-start p-4 space-x-4">
         <div>
-          <p className="text-white text-5xl font-bold ">
+          <p className="text-white md:text-5xl text-2xl font-bold ">
             Welcome to College Road Trip Africa
           </p>
           <p className="text-white text-sm italic mt-2">

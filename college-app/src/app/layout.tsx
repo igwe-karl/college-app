@@ -23,7 +23,7 @@ export default function RootLayout({
         <div className="min-h-screen">
           <Header />
           <AuthProvider>
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-screen w-full">{children}</main>
           </AuthProvider>
           <Footer />
         </div>
