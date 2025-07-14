@@ -4,24 +4,27 @@ import { mdiInstagram } from "@mdi/js";
 import { mdiFacebook, mdiYoutube } from "@mdi/js";
 import { IconButton } from "./iconButton";
 import { Input } from "./input";
+import { useRouter } from "next/navigation";
 
 export default function Footer() {
+  const router = useRouter();
+
   const companyItems = [
     {
       title: "Company",
       items: [
-        { label: "About Us" },
-        { label: "Contact Us" },
-        { label: "Sponsors" },
-        { label: "Terms of Service" },
+        { label: "About Us", url: "./about" },
+        { label: "Contact Us", url: "/contact" },
+        { label: "Sponsors", url: "/sponsor" },
+        { label: "Terms of Service", url: "/terms" },
       ],
     },
     {
       title: "News",
       items: [
-        { label: "Entertainment" },
-        { label: "Road Trip" },
-        { label: "Privacy Policy" },
+        { label: "Entertainment", url: "/entertainment" },
+        { label: "Road Trip",url:"" },
+        { label: "Privacy Policy", url: "/privacy" },
       ],
     },
   ];
@@ -36,7 +39,7 @@ export default function Footer() {
     {
       id: 2,
       icon: mdiYoutube,
-      link: "https://www.youtube.com/channel/UC8-888888888888888888",
+      link: "https://youtube.com/@crtafrica9710?si=0dyNNzZner_VHkT8",
       iconColor: "bg-red-500",
     },
     {
@@ -54,7 +57,11 @@ export default function Footer() {
           <div key={item.title} className="flex flex-col gap-2">
             <p className="font-bold text-xl capitalize">{item.title}</p>
             {item.items.map((subItem) => (
-              <span key={subItem.label} className="text-sm text-gray-700">
+              <span
+                onClick={() => router.push(subItem?.url)}
+                key={subItem.label}
+                className="text-sm text-gray-700 cursor-pointer"
+              >
                 {subItem.label}
               </span>
             ))}

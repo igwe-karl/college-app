@@ -20,12 +20,11 @@ interface NewsTabProps {
 const NewsTab = ({
   image = "/assets/image/news.jpeg",
   title = "News Title",
-  description = "This is a short description of the news item.",
   className = "",
   link = "/",
   isPage = false,
-  imageWidth = 120,
-  imageHeight = 120,
+  imageWidth = 60,
+  imageHeight = 60,
 }: NewsTabProps) => {
   const router = useRouter();
 
@@ -33,30 +32,21 @@ const NewsTab = ({
     <div
       onClick={() => router.push(link)}
       className={clsx(
-        "cursor-pointer w-full p-4 bg-gray-100 rounded-lg hover:shadow transition-all duration-200",
-        isPage ? "flex flex-row gap-4 items-start" : "flex flex-col items-center text-center",
+        "cursor-pointer flex w-full p-4 bg-gray-100 hover:shadow transition-all duration-200 flex flex-col gap-2",
         className
       )}
     >
-      <div>
-        <Image
-          src={image}
-          alt="news"
-          width={imageWidth}
-          height={imageHeight}
-          className="rounded-md object-cover"
-        />
-      </div>
-
-      <div className={clsx("flex flex-col gap-2 text-black", isPage ? "" : "items-center mt-2")}>
-        <h1 className="text-lg font-semibold">{title}</h1>
-        <p className={clsx("text-sm", isPage ? "w-full truncate" : "max-w-xs")}>
-          {description}
-        </p>
-        <div className="flex flex-row items-center justify-end gap-2 mt-2">
-          <Icon path={mdiShare} size={1} color="blue" />
-          <Icon path={mdiHeart} size={1} color="orange" />
-        </div>
+      <div className="flex flex-row gap-2">
+        {image && (
+          <Image
+            src={image}
+            alt="news"
+            width={imageWidth}
+            height={imageHeight}
+            className="rounded-md object-cover w-10 h-10"
+          />
+        )}
+        <h1 className="text-sm font-semibold">{title}</h1>
       </div>
     </div>
   );
