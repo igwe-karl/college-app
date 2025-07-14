@@ -23,8 +23,8 @@ const NewsTab = ({
   className = "",
   link = "/",
   isPage = false,
-  imageWidth = 60,
-  imageHeight = 60,
+  imageWidth = 100,
+  imageHeight = 100,
 }: NewsTabProps) => {
   const router = useRouter();
 
@@ -32,7 +32,7 @@ const NewsTab = ({
     <div
       onClick={() => router.push(link)}
       className={clsx(
-        "cursor-pointer flex w-full p-4 bg-gray-100 hover:shadow transition-all duration-200 flex flex-col gap-2",
+        "cursor-pointer flex w-full p-4 bg-gray-100 hover:shadow flex flex-col gap-2",
         className
       )}
     >

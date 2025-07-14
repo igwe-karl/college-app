@@ -86,9 +86,9 @@ export default function Home() {
           hello and welcome to the app
         </div>
       )} */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 ">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 w-full">
         <div className="md:col-span-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-1 xl:grid-cols-2 gap-4">
             {videoUrls.map((url, index) => (
               <PopularTab
                 key={index}
@@ -101,11 +101,11 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="col-span-1">
-          <p className="text-2xl font-bold text-center bg-orange-500 text-white rounded-t-md p-2">
+        <div className="col-span-1 w-full">
+          <p className="text-2xl font-bold text-center bg-orange-500 text-white rounded-t-md p-2 w-full">
             Highlights
           </p>
-          <div className="flex flex-col gap-">
+          <div className="flex flex-col w-full">
             {news.map((item, index) => (
               <NewsTab
                 key={index}
