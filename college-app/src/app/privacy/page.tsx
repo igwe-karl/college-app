@@ -82,7 +82,7 @@ const PrivacyPolicy: React.FC = () => {
       <h2 className="font-bold">Contact Us</h2>
       <p>
         If you have any questions about this Privacy Policy, please contact us
-        at privacy@College Road Trip.io
+        at crtafrica@gmail.com
       </p>
     </div>
   );

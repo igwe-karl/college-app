@@ -42,14 +42,17 @@ const Header = () => {
       style={{ backgroundImage: 'url("/assets/image/simba.png")' }}
       className="flex sm:flex-col flex-row items-center justify-between bg-orange-500 px-4 py-20 w-full"
     >
-      <div className="flex flex-row items-center justify-start p-4">
+      <div
+        className="flex flex-row items-center justify-start p-4 cursor-pointer"
+        onClick={() => router.push("/")}
+      >
         {/* <p className="text-4xl font-bold text-black">CRT</p> */}
-        {/* <Image
+        <Image
           src={"/assets/image/logo.jpg"}
           alt="logo"
           width={80}
           height={80}
-        /> */}
+        />
       </div>
       <div className="flex flex-row items-start justify-start p-4 space-x-4">
         <div>

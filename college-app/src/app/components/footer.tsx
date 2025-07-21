@@ -13,9 +13,9 @@ export default function Footer() {
     {
       title: "Company",
       items: [
-        { label: "About Us", url: "./about" },
+        { label: "About Us", url: "./company" },
         { label: "Contact Us", url: "/contact" },
-        { label: "Sponsors", url: "/sponsor" },
+        // { label: "Sponsors", url: "/sponsor" },
         { label: "Terms of Service", url: "/terms" },
       ],
     },

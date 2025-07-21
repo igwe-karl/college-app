@@ -11,6 +11,16 @@ export default function Home() {
 
   const videoUrls = [
     {
+      title: "Hostel war between Nigeria and Ghana",
+      description: "Hostel war between Nigeria and Ghana",
+      image: "https://www.youtube.com/embed/lE-46kMCplI?si=6C9w4ptoZdqmGJW2",
+    },
+    {
+      title: "Hostel war between Nigeria and Ghana",
+      description: "Hostel war between Nigeria and Ghana",
+      image: "https://www.youtube.com/embed/9rsSHZtESsY?si=imAKIawqyiaQQi5u",
+    },
+    {
       title:
         "Drama Beyond the Stage: NYSC Wahala, Attendance Games & Theatre Induction Palava.",
       description:
@@ -34,6 +44,11 @@ export default function Home() {
       title: "How to spot a fresher",
       description: "How to spot a fresher in the university",
       image: "https://www.youtube.com/embed/9rsSHZtESsY?si=imAKIawqyiaQQi5u",
+    },
+    {
+      title: "Hostel war between Nigeria and Ghana",
+      description: "Hostel war between Nigeria and Ghana",
+      image: "https://www.youtube.com/embed/vZnnwzCw7jY?si=rfsG2uCuIccjpkcD",
     },
   ];
 
@@ -64,9 +79,9 @@ export default function Home() {
       // image: "/assets/image/bubu.jpeg",
     },
     {
-      title: "Nigeria's Former President is dead",
+      title: "Dating in the university",
       description:
-        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
+        "Dating in the university",
       // image: "/assets/image/bubu.jpeg",
     },
   ];
@@ -109,7 +124,7 @@ export default function Home() {
             {news.map((item, index) => (
               <NewsTab
                 key={index}
-                image={item.image}
+                // image={item.image}
                 title={item.title}
                 description={item.description}
               />

@@ -18,7 +18,7 @@ interface NewsTabProps {
 }
 
 const NewsTab = ({
-  image = "/assets/image/news.jpeg",
+  image = "",
   title = "News Title",
   className = "",
   link = "/",
