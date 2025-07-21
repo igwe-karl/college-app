@@ -11,8 +11,8 @@ export default function Home() {
 
   const videoUrls = [
     {
-      title: "Hostel war between Nigeria and Ghana",
-      description: "Hostel war between Nigeria and Ghana",
+      title: "Do you want to be a CRTA Ambassador?",
+      description: "Do you want to be a CRTA Ambassador?",
       image: "https://www.youtube.com/embed/lE-46kMCplI?si=6C9w4ptoZdqmGJW2",
     },
     {
