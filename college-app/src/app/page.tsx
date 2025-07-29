@@ -11,14 +11,19 @@ export default function Home() {
 
   const videoUrls = [
     {
+      title: "Campus crisis and cash giveaway?",
+      description: "A jampacked story involving ex-presendential candidate Peter Obi, protest on campus...",
+      image: "https://www.youtube.com/embed/NNZFETTu2oI?si=KX25vhgoydJLE3MO",
+    },
+    {
       title: "Do you want to be a CRTA Ambassador?",
       description: "Do you want to be a CRTA Ambassador?",
       image: "https://www.youtube.com/embed/lE-46kMCplI?si=6C9w4ptoZdqmGJW2",
     },
     {
-      title: "Hostel war between Nigeria and Ghana",
-      description: "Hostel war between Nigeria and Ghana",
-      image: "https://www.youtube.com/embed/9rsSHZtESsY?si=imAKIawqyiaQQi5u",
+      title: "Unilag student and VDM to the rescue from her landlord",
+      description: "Landlord demands more than house rent then threatens to kill and bury his tenant with 500k",
+      image: "https://www.youtube.com/embed/6TKKfny-9Gk?si=u4iZ5nmQBHoyYrJm",
     },
     {
       title:
@@ -106,7 +111,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-1 xl:grid-cols-2 gap-4">
             {videoUrls.map((url, index) => (
               <PopularTab
-                key={index}
+                key={url.title}
                 className="mb-4"
                 image={url.image}
                 title={url.title}

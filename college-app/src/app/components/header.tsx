@@ -39,7 +39,7 @@ const Header = () => {
 
   return (
     <div
-      style={{ backgroundImage: 'url("/assets/image/simba.png")' }}
+      style={{ backgroundImage: 'url("/assets/image/jersey_black.jpg")' }}
       className="flex sm:flex-col flex-row items-center justify-between bg-orange-500 px-4 py-20 w-full"
     >
       <div
