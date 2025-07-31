@@ -12,7 +12,8 @@ export default function Home() {
   const videoUrls = [
     {
       title: "Campus crisis and cash giveaway?",
-      description: "A jampacked story involving ex-presendential candidate Peter Obi, protest on campus...",
+      description:
+        "A jampacked story involving ex-presendential candidate Peter Obi, protest on campus...",
       image: "https://www.youtube.com/embed/NNZFETTu2oI?si=KX25vhgoydJLE3MO",
     },
     {
@@ -22,7 +23,8 @@ export default function Home() {
     },
     {
       title: "Unilag student and VDM to the rescue from her landlord",
-      description: "Landlord demands more than house rent then threatens to kill and bury his tenant with 500k",
+      description:
+        "Landlord demands more than house rent then threatens to kill and bury his tenant with 500k",
       image: "https://www.youtube.com/embed/6TKKfny-9Gk?si=u4iZ5nmQBHoyYrJm",
     },
     {
@@ -59,7 +61,13 @@ export default function Home() {
 
   const news = [
     {
-      title: "Nigeria's Former President is dead",
+      title: "What is CRTAfrica?",
+      description:
+        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
+      image: "/assets/image/trans.webp",
+    },
+    {
+      title: "Nigeria's Former President Muhammadu Buhari is dead",
       description:
         "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
       image: "/assets/image/bubu.JPG",
@@ -70,12 +78,6 @@ export default function Home() {
         "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
       image: "/assets/image/simba.png",
     },
-    {
-      title: "Who/what/where?",
-      description:
-        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
-      image: "/assets/image/trans.webp",
-    },
 
     {
       title: "Asuu strike again?",
@@ -85,14 +87,48 @@ export default function Home() {
     },
     {
       title: "Dating in the university",
-      description:
-        "Dating in the university",
+      description: "Dating in the university",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "Lecturer and student relationship",
+      description: "lecturer and student relationship",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "How to get a job in the university",
+      description: "How to get a job in the university",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "How to be a straight A's student",
+      description: "How to be a good student",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "Third class is not a problem",
+      description: "Third class is not a problem",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "Student vs working class",
+      description: "Student vs working class",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "Handling parents expectations",
+      description: "Handling parents expectations",
+      // image: "/assets/image/bubu.jpeg",
+    },
+    {
+      title: "Final year students and their final year project",
+      description: "Final year students and their final year project",
       // image: "/assets/image/bubu.jpeg",
     },
   ];
 
   return (
-    <div className=" min-h-screen py-20 px-20">
+    <div className=" min-h-screen py-20 lg:px-20 px-4 ">
       {/* {currentUser ? (
         <div className="w-full items-center justify-between font-mono text-sm ">
           <p className="text-xl">Hello and welcome back</p>
@@ -106,8 +142,8 @@ export default function Home() {
           hello and welcome to the app
         </div>
       )} */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 w-full">
-        <div className="md:col-span-4">
+      <div className="grid grid-cols-2 md:grid-cols-6 gap-8 w-full">
+        <div className="md:col-span-4 col-span-2">
           <div className="grid sm:grid-cols-1 xl:grid-cols-2 gap-4">
             {videoUrls.map((url, index) => (
               <PopularTab
@@ -121,8 +157,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="col-span-1 w-full">
-          <p className="text-2xl font-bold text-center bg-orange-500 text-white rounded-t-md p-2 w-full">
+        <div className="col-span-2 w-full">
+          <p className="lg:text-2xl text-xl font-bold text-center bg-orange-500 text-white rounded-t-md p-2 w-full">
             Highlights
           </p>
           <div className="flex flex-col w-full">
