@@ -6,7 +6,7 @@ export default function Company() {
     {
       name: "Igwe Emmanuel Uzorchi",
       role: "Founder & CEO",
-      image: "/assets/image/ceo.jpeg",
+      image: "/assets/image/ceo.JPG",
     },
     {
       name: "Igwe Chigozie Calistus",
