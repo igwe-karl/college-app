@@ -15,13 +15,13 @@ export default function Company() {
     },
     {
       name: "Irene Otali",
-      role: "Assistant Director",
+      role: "Content Creator/Producer",
       image: "/assets/image/irene.jpg",
     },
     {
-      name: "Jerusalem Okechukwu",
+      name: "Jerusalem Dzuamo",
       role: "Creative Director",
-      image: "/assets/image/jerusalem.jpg",
+      image: "/assets/image/dir.jpg",
     },
   ];  
 
@@ -46,7 +46,7 @@ export default function Company() {
 
       <div className="flex flex-col gap-4 mt-10">
         <div className="text-4xl font-bold text-center">Our Team</div>
-        <div className="text-lg grid grid-cols-2 items-center justify-center space-y-10 mt-10">
+        <div className="text-lg grid lg:grid-cols-2 grid-cols-1 items-center justify-center space-y-10 mt-10 mb-20">
           {team.map((item, index) => (
             <TeamCard
               key={index}

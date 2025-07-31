@@ -13,7 +13,7 @@ export const TeamCard = ({
   order?: string;
 }) => {
   return (
-    <div className="flex flex-row space-x-4 items-center justify-center w-[60%] ">
+    <div className="flex flex-row space-x-4 items-center justify-center w-full lg:w-[60%] ">
       <div
         className={`${order === "first" ? "order-first" : "order-last"}`}
       >
