@@ -23,6 +23,7 @@ const nextConfig = {
       "uploads-ssl.webflow.com",
       "www.youtube.com",
       "www.youtube-nocookie.com",
+      "via.placeholder.com",
     ],
   },
 };

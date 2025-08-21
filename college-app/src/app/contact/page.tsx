@@ -1,7 +1,6 @@
 import { Input } from "@/app/components/input";
 import React from "react";
 import { Phone, MapPin, Mail } from "lucide-react";
-import Image from "next/image";
 
 export default function Contact() {
   return (

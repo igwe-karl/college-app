@@ -4,7 +4,7 @@ import React from "react";
 export default function Company() {
   const team = [
     {
-      name: "Igwe Emmanuel Uzorchi",
+      name: "Igwe Emmanuel Uzochi",
       role: "Founder & CEO",
       image: "/assets/image/ceo.JPG",
     },
@@ -23,7 +23,7 @@ export default function Company() {
       role: "Creative Director",
       image: "/assets/image/dir.jpg",
     },
-  ];  
+  ];
 
   return (
     <div className="flex flex-col gap-4 px-20">
@@ -31,10 +31,10 @@ export default function Company() {
 
       <div className="text-lg text-center">
         <p>
-          College Road Trip Africa is a vibrant content creation channel dedicated to
-          amplifying the voice of the African student. We’re currently
-          recruiting campus reporters from universities across Africa to
-          represent their schools and share unique stories, experiences, and
+          College Road Trip Africa is a vibrant content creation channel
+          dedicated to amplifying the voice of the African student. We’re
+          currently recruiting campus reporters from universities across Africa
+          to represent their schools and share unique stories, experiences, and
           insights. If you’re passionate about storytelling and want to be part
           of the CRTAFRICA network.
         </p>
@@ -46,17 +46,18 @@ export default function Company() {
 
       <div className="flex flex-col gap-4 mt-10">
         <div className="text-4xl font-bold text-center">Our Team</div>
-        <div className="text-lg grid lg:grid-cols-2 grid-cols-1 items-center justify-center space-y-10 mt-10 mb-20">
+        <div className="text-lg grid lg:grid-cols-3 grid-cols-1 items-center justify-center space-y-10 mt-10 mb-20 gap-6">
           {team.map((item, index) => (
-            <TeamCard
-              key={index}
-              title={item.name}
-              description={item.role}
-              image={item.image}
-              order={"first"}
-            />
+            <div key={index} >
+              <TeamCard
+                key={index}
+                title={item.name}
+                description={item.role}
+                image={item.image}
+                order={"first"}
+              />
+            </div>
           ))}
-    
         </div>
       </div>
     </div>

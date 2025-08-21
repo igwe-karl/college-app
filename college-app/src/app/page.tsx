@@ -1,129 +1,65 @@
 "use client";
 
 import { useAuth } from "@/app/context/authContext";
-import NewsTab from "./components/newsTab";
 import PopularTab from "./components/popularTab";
+import { Accordion } from "./components/accordion";
+import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/slider";
+import { StoryGrid } from "@/components/storyGrid";
 
 export default function Home() {
   const { currentUser } = useAuth();
 
-  console.log("currentUser", currentUser);
+  // console.log("currentUser", currentUser);
 
   const videoUrls = [
     {
-      title: "Campus crisis and cash giveaway?",
+      title: "Hammer Time and Malpractice Drama",
       description:
-        "A jampacked story involving ex-presendential candidate Peter Obi, protest on campus...",
-      image: "https://www.youtube.com/embed/NNZFETTu2oI?si=KX25vhgoydJLE3MO",
+        "Hammer Time and Malpractice Drama as students suffer some sort of injustice after being acught for malpractice",
+      image: "https://www.youtube.com/embed/Fh1_2KPw6go?si=9tF_7gkV4KjehzS8",
     },
     {
-      title: "Do you want to be a CRTA Ambassador?",
-      description: "Do you want to be a CRTA Ambassador?",
-      image: "https://www.youtube.com/embed/lE-46kMCplI?si=6C9w4ptoZdqmGJW2",
-    },
-    {
-      title: "Unilag student and VDM to the rescue from her landlord",
+      title: "KIDNAP & RESCUED LAW STUDENTS SITUATION IN BENUE?",
       description:
-        "Landlord demands more than house rent then threatens to kill and bury his tenant with 500k",
-      image: "https://www.youtube.com/embed/6TKKfny-9Gk?si=u4iZ5nmQBHoyYrJm",
-    },
-    {
-      title:
-        "Drama Beyond the Stage: NYSC Wahala, Attendance Games & Theatre Induction Palava.",
-      description:
-        "this piece dives into the real-life drama surrounding theatre art inductions, NYSC uncertainties, and the comical chaos of attendance politics in schools.",
-      image: "https://www.youtube.com/embed/hHIKgqFX0C8?si=fQcB0_6nyHbvYTSe",
-    },
-    {
-      title: "Theatre Art Induction: The Drama of First Impressions",
-      description:
-        "From the moment they step onto the stage, the first impression is everything.",
-      image: "https://www.youtube.com/embed/ouYUsj_Z4Ho?si=Ob-XYQ6J4InisAt8",
-    },
-
-    {
-      title: "News that will make you laugh",
-      description:
-        "College Road Trip is a Magazine Campus Content targeted at African youths. It is a weekly highlight of Campus activities - News, Fashion, Music, Life Style and more",
-      image: "https://www.youtube.com/embed/JIrBOPBCTpw?si=96cx3JT4TI-W5Ay8",
-    },
-    {
-      title: "How to spot a fresher",
-      description: "How to spot a fresher in the university",
-      image: "https://www.youtube.com/embed/9rsSHZtESsY?si=imAKIawqyiaQQi5u",
-    },
-    {
-      title: "Hostel war between Nigeria and Ghana",
-      description: "Hostel war between Nigeria and Ghana",
-      image: "https://www.youtube.com/embed/vZnnwzCw7jY?si=rfsG2uCuIccjpkcD",
+        "Law students in Benue were kidnapped and a 50m ransom was requested but all thanks to the police to secure their release.",
+      image: "https://www.youtube.com/embed/IeZ-rDLuyzI?si=2d9_4Wk7-4bCm9D9",
     },
   ];
 
-  const news = [
+  const faqs = [
     {
-      title: "What is CRTAfrica?",
+      title: "What is College Road Trip Africa ?",
       description:
-        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
-      image: "/assets/image/trans.webp",
+        "College Road Trip Africa also known as CRTAfrica is a platform for students to share their experiences and advice.",
     },
     {
-      title: "Nigeria's Former President Muhammadu Buhari is dead",
+      title: "Who is College Road Trip Africa for?",
       description:
-        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
-      image: "/assets/image/bubu.JPG",
+        "College Road Trip Africa is for students who are interested in sharing their experiences and advice.",
     },
     {
-      title: "What was special for you in school?",
+      title: "How do I become a College Road Trip Africa Ambassador?",
       description:
-        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
-      image: "/assets/image/simba.png",
+        "To become a CRTAfrica Ambassador, you need to be a student of a university in Africa and have a passion for sharing your experiences and school content.You can apply to become a CRTAfrica Ambassador by sending us a 1minute video of yourself sharing your experiences and school content. The video should be uploaded to your Instagram channel and the tag should be @crtafrica.",
     },
+    {
+      title: "How do I become a College Road Trip Africa studio Presenter?",
+      description:
+        "To become a CRTAfrica Presenter, you need to be a student of a university in Africa and have a passion for sharing your experiences and school content.You can apply to become a CRTAfrica Presenter by sending us a 1minute video of yourself sharing your experiences and school content. The video should be uploaded to your Instagram channel and the tag should be @crtafrica.",
+    },
+  ];
 
+  const items = [
     {
-      title: "Asuu strike again?",
-      description:
-        "News that will make you laugh and fall to the back of yoiur chair and cry so hard uou would miss your dead relatives",
-      // image: "/assets/image/bubu.jpeg",
+      title: "Item 1",
+      description: "Description 1",
+      image: "/logo.jpg",
     },
     {
-      title: "Dating in the university",
-      description: "Dating in the university",
-      // image: "/assets/image/bubu.jpeg",
-    },
-    {
-      title: "Lecturer and student relationship",
-      description: "lecturer and student relationship",
-      // image: "/assets/image/bubu.jpeg",
-    },
-    {
-      title: "How to get a job in the university",
-      description: "How to get a job in the university",
-      // image: "/assets/image/bubu.jpeg",
-    },
-    {
-      title: "How to be a straight A's student",
-      description: "How to be a good student",
-      // image: "/assets/image/bubu.jpeg",
-    },
-    {
-      title: "Third class is not a problem",
-      description: "Third class is not a problem",
-      // image: "/assets/image/bubu.jpeg",
-    },
-    {
-      title: "Student vs working class",
-      description: "Student vs working class",
-      // image: "/assets/image/bubu.jpeg",
-    },
-    {
-      title: "Handling parents expectations",
-      description: "Handling parents expectations",
-      // image: "/assets/image/bubu.jpeg",
-    },
-    {
-      title: "Final year students and their final year project",
-      description: "Final year students and their final year project",
-      // image: "/assets/image/bubu.jpeg",
+      title: "Item 2",
+      description: "Description 2",
+      image: "/logo.jpg",
     },
   ];
 
@@ -142,36 +78,92 @@ export default function Home() {
           hello and welcome to the app
         </div>
       )} */}
-      <div className="grid grid-cols-2 md:grid-cols-6 gap-8 w-full">
-        <div className="md:col-span-4 col-span-2">
-          <div className="grid sm:grid-cols-1 xl:grid-cols-2 gap-4">
-            {videoUrls.map((url, index) => (
-              <PopularTab
-                key={url.title}
-                className="mb-4"
-                image={url.image}
-                title={url.title}
-                description={url.description}
-              />
-            ))}
-          </div>
-        </div>
 
-        <div className="col-span-2 w-full">
+      <div className="grid grid-cols-1 gap-8 w-full">
+        {/* <Label className="font-bold text-center text-2xl">
+          Latest on CRTAFRICA
+        </Label> */}
+        <div className="grid sm:grid-cols-1 xl:grid-cols-2 gap-4">
+          {videoUrls.map((url, index) => (
+            <PopularTab
+              key={url.title}
+              className="mb-4"
+              image={url.image}
+              title={url.title}
+              description={url.description}
+            />
+          ))}
+        </div>
+      </div>
+      <div>
+        <StoryGrid></StoryGrid>
+      </div>
+      {/* <div className="w-full mb-20 bg-orange-500">
+        <Slider items={items} /> 
+      </div> */}
+      {/* <div className="grid grid-cols-3 gap-10 mb-20 mt-20">
+        <div className="col-span-2">x</div>
+        <div className="col-span-1 w-full">
           <p className="lg:text-2xl text-xl font-bold text-center bg-orange-500 text-white rounded-t-md p-2 w-full">
-            Highlights
+            Let&apos;s get in touch
           </p>
-          <div className="flex flex-col w-full">
-            {news.map((item, index) => (
-              <NewsTab
-                key={index}
-                // image={item.image}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
+          <div className="">
+            <div className="grid grid-cols-1 gap-10 mt-10 ">
+              <div className="flex flex-col gap-8">
+                <Input
+                  showIfValid={true}
+                  placeholder="Name"
+                  type="text"
+                  name="name"
+                />
+                <Input
+                  showIfValid={true}
+                  placeholder="Email"
+                  type="email"
+                  name="email"
+                />
+                <Input
+                  showIfValid={true}
+                  placeholder="Message"
+                  type="text"
+                  name="message"
+                />
+                <Input
+                  showIfValid={true}
+                  placeholder="Phone"
+                  type="text"
+                  name="phone"
+                />
+              </div>
+              <div className="flex flex-col gap-4 ">
+                <div className="flex flex-row gap-4 items-center">
+                  <Phone className="w-5 h-5" />
+                  <p> +234 803 928 6926</p>
+                </div>
+                <div className="flex flex-row gap-4 items-center">
+                  <MapPin className="w-5 h-5" />
+                  <div className="flex flex-col gap-2">
+                    <p>
+                      2 Jacob Nwazota street, peace estate, Gbagada, Lagos,
+                      Nigeria. 50234
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-row gap-4 items-center">
+                  <Mail className="w-5 h-5" />
+                  <p>crtafrica@gmail.com</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </div> */}
+      <div className="w-full mt-20 flex flex-col gap-4">
+        <Label className="text-2xl font-bold text-center">FAQs</Label>
+        <p className="text-center text-sm text-gray-500">
+          Find answers to common questions and concerns
+        </p>
+        <Accordion items={faqs} />
       </div>
     </div>
   );
