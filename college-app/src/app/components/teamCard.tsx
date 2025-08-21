@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const TeamCard = ({
   title,
@@ -13,22 +14,20 @@ export const TeamCard = ({
   order?: string;
 }) => {
   return (
-    <div className="flex flex-row space-x-4 items-center justify-center w-full lg:w-[60%] ">
-      <div
-        className={`${order === "first" ? "order-first" : "order-last"}`}
-      >
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+      <div className=" overflow-hidden">
         <Image
           src={image}
-          alt="team"
+          alt={title}
           width={200}
-          height={100}
-          className="w-full h-full object-cover"
+          height={50}
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
       </div>
-      <div className="w-full flex flex-col space-y-4">
-        <p className="text-2xl font-bold">{title}</p>
-        <p className="text-lg">{description}</p>
-      </div>
-    </div>
+      <CardContent className="p-6">
+        <h3 className="text-xl font-bold text-foreground mb-1">{title}</h3>
+        <p className="text-accent font-semibold mb-3">{description}</p>
+      </CardContent>
+    </Card>
   );
 };
