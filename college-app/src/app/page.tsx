@@ -31,12 +31,12 @@ export default function Home() {
     {
       title: "What is College Road Trip Africa ?",
       description:
-        "College Road Trip Africa also known as CRTAfrica is a platform for students to share their experiences and advice.",
+        "College road trip Africa also known as CRTAFRICA is the voice of the African student. Our goal is to create a platform that unites all Africa students.",
     },
     {
       title: "Who is College Road Trip Africa for?",
       description:
-        "College Road Trip Africa is for students who are interested in sharing their experiences and advice.",
+        "CRT is primarily for the African students, parents of students, people waiting for admission into the higher institution and the world at large.",
     },
     {
       title: "How do I become a College Road Trip Africa Ambassador?",
