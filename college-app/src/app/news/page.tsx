@@ -4,6 +4,12 @@ import NewsTab from "../components/newsTab";
 const Home = () => {
   const videoUrls = [
     {
+      title: "A date with Mr Unilag",
+      description:
+        "A date with Mr Unilag as he shares his experience as a student of the university of Lagos.",
+      image: "https://www.youtube.com/embed/pxMn3gwNb0M?si=_sKYQOL3uTjXVCIM",
+    },
+    {
       title: "Hammer Time and Malpractice Drama",
       description:
         "Hammer Time and Malpractice Drama as students suffer some sort of injustice after being acught for malpractice",

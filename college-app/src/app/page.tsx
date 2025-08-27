@@ -14,16 +14,16 @@ export default function Home() {
 
   const videoUrls = [
     {
+      title: "A date with Mr Unilag",
+      description:
+        "A date with Mr Unilag as he shares his experience as a student of the university of Lagos.",
+      image: "https://www.youtube.com/embed/pxMn3gwNb0M?si=_sKYQOL3uTjXVCIM",
+    },
+    {
       title: "Hammer Time and Malpractice Drama",
       description:
         "Hammer Time and Malpractice Drama as students suffer some sort of injustice after being acught for malpractice",
       image: "https://www.youtube.com/embed/Fh1_2KPw6go?si=9tF_7gkV4KjehzS8",
-    },
-    {
-      title: "KIDNAP & RESCUED LAW STUDENTS SITUATION IN BENUE?",
-      description:
-        "Law students in Benue were kidnapped and a 50m ransom was requested but all thanks to the police to secure their release.",
-      image: "https://www.youtube.com/embed/IeZ-rDLuyzI?si=2d9_4Wk7-4bCm9D9",
     },
   ];
 
