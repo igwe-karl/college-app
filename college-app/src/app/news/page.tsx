@@ -4,6 +4,12 @@ import NewsTab from "../components/newsTab";
 const Home = () => {
   const videoUrls = [
     {
+      title: "A chill time with the ladies",
+      description:
+        "A chill time with the ladies as they share their experiences and school content.",
+      image: "https://www.youtube.com/embed/JYE5TfARaGk?si=tRQSMkXexzicrfLl",
+    },
+    {
       title: "A date with Mr Unilag",
       description:
         "A date with Mr Unilag as he shares his experience as a student of the university of Lagos.",
