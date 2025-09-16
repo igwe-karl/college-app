@@ -20,10 +20,10 @@ export default function Home() {
       image: "https://www.youtube.com/embed/pxMn3gwNb0M?si=_sKYQOL3uTjXVCIM",
     },
     {
-      title: "Hammer Time and Malpractice Drama",
+      title: "A chill time with the ladies",
       description:
-        "Hammer Time and Malpractice Drama as students suffer some sort of injustice after being acught for malpractice",
-      image: "https://www.youtube.com/embed/Fh1_2KPw6go?si=9tF_7gkV4KjehzS8",
+        "A chill time with the ladies as they share their experiences and school content.",
+      image: "https://www.youtube.com/embed/JYE5TfARaGk?si=tRQSMkXexzicrfLl",
     },
   ];
 
