@@ -4,6 +4,18 @@ import NewsTab from "../components/newsTab";
 const Home = () => {
   const videoUrls = [
     {
+      title: "Games week as Mosun and her guest students play games and share their experiences.",
+      description:
+        "Games week as Mosun and her guest students play games and share their experiences.",
+      image: "https://www.youtube.com/embed/o2f7KSdWjZI?si=FCQdolYihd1uoL_0",
+    },
+    {
+      title: "Campus heat: University Ranking, Phone bans etc",
+      description:
+        "Campus heat: University Ranking, Phone bans etc",
+      image: "https://www.youtube.com/embed/5MBdBprTTtM?si=ZTLiZeZKp7vf820u",
+    },
+    {
       title: "A chill time with the ladies",
       description:
         "A chill time with the ladies as they share their experiences and school content.",
