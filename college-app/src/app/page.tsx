@@ -14,10 +14,10 @@ export default function Home() {
 
   const videoUrls = [
     {
-      title: "A date with Mr Unilag",
+      title: "Campus heat: University Ranking, Phone bans etc",
       description:
-        "A date with Mr Unilag as he shares his experience as a student of the university of Lagos.",
-      image: "https://www.youtube.com/embed/pxMn3gwNb0M?si=_sKYQOL3uTjXVCIM",
+        "Campus heat: University Ranking, Phone bans etc",
+      image: "https://www.youtube.com/embed/5MBdBprTTtM?si=ZTLiZeZKp7vf820u",
     },
     {
       title: "A chill time with the ladies",
