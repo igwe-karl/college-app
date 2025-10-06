@@ -14,16 +14,18 @@ export default function Home() {
 
   const videoUrls = [
     {
-      title: "Campus heat: University Ranking, Phone bans etc",
+      id: 1,
+      title: "The Uni Hustle: Hacks We Swear By, Lies We Tell & Strikes Endured",
       description:
-        "Campus heat: University Ranking, Phone bans etc",
-      image: "https://www.youtube.com/embed/5MBdBprTTtM?si=ZTLiZeZKp7vf820u",
+        "The Uni Hustle: Hacks We Swear By, Lies We Tell & Strikes Endured",
+      image: "https://www.youtube.com/embed/mbpMlw7DKZw?si=8LpSp508K9OSNjDS",
     },
     {
-      title: "A chill time with the ladies",
+      id: 2,
+      title: "Expectation VS Reality: Love on Campus and Battle of Brains",
       description:
-        "A chill time with the ladies as they share their experiences and school content.",
-      image: "https://www.youtube.com/embed/JYE5TfARaGk?si=tRQSMkXexzicrfLl",
+        "Love on Campus and Battle of Brains...",
+      image: "https://www.youtube.com/embed/TTxOU15Ffjg?si=VSqIf3C7mvug9hOA",
     },
   ];
 
@@ -50,19 +52,6 @@ export default function Home() {
     },
   ];
 
-  const items = [
-    {
-      title: "Item 1",
-      description: "Description 1",
-      image: "/logo.jpg",
-    },
-    {
-      title: "Item 2",
-      description: "Description 2",
-      image: "/logo.jpg",
-    },
-  ];
-
   return (
     <div className=" min-h-screen py-20 lg:px-20 px-4 ">
       {/* {currentUser ? (
@@ -86,7 +75,7 @@ export default function Home() {
         <div className="grid sm:grid-cols-1 xl:grid-cols-2 gap-4">
           {videoUrls.map((url, index) => (
             <PopularTab
-              key={url.title}
+              key={url.id}
               className="mb-4"
               image={url.image}
               title={url.title}

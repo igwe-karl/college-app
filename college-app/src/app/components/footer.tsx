@@ -52,8 +52,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-sidebar text-sidebar-foreground py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+      <div className="lg:mx-16 mx-4 px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-xl font-bold mb-4 text-sidebar-primary">
               CRTAFRICA
