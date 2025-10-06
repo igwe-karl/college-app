@@ -4,6 +4,18 @@ import NewsTab from "../components/newsTab";
 const Home = () => {
   const videoUrls = [
     {
+      title: "Expectation VS Reality: Love on Campus and Battle of Brains",
+      description:
+        "Love on Campus and Battle of Brains...",
+      image: "https://www.youtube.com/embed/TTxOU15Ffjg?si=VSqIf3C7mvug9hOA",
+    },
+    {
+      title: "The Uni Hustle: Hacks We Swear By, Lies We Tell & Strikes Endured",
+      description:
+        "The Uni Hustle: Hacks We Swear By, Lies We Tell & Strikes Endured",
+      image: "https://www.youtube.com/embed/mbpMlw7DKZw?si=8LpSp508K9OSNjDS",
+    },
+    {
       title: "Games week as Mosun and her guest students play games and share their experiences.",
       description:
         "Games week as Mosun and her guest students play games and share their experiences.",
