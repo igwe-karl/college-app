@@ -15,17 +15,17 @@ export default function Home() {
   const videoUrls = [
     {
       id: 1,
-      title: "The Uni Hustle: Hacks We Swear By, Lies We Tell & Strikes Endured",
+      title: "Ep 17: UNIJOS Student Murder Shock + FUTO Lecturer Destroys Project and Fashion Edition",
       description:
-        "The Uni Hustle: Hacks We Swear By, Lies We Tell & Strikes Endured",
-      image: "https://www.youtube.com/embed/mbpMlw7DKZw?si=8LpSp508K9OSNjDS",
+        "UNIJOS Student Murder Shock + FUTO Lecturer Destroys Project and Fashion Edition",
+      image: "https://www.youtube.com/embed/j87WtRvPztY?si=GZ4gJAFFGNlW5Xli",
     },
     {
       id: 2,
-      title: "Expectation VS Reality: Love on Campus and Battle of Brains",
+      title: "EP 16: From Fear to Fun — Security Talks, Favorite Artiste & School Battles LASPOTECH vs YABATECH",
       description:
-        "Love on Campus and Battle of Brains...",
-      image: "https://www.youtube.com/embed/TTxOU15Ffjg?si=VSqIf3C7mvug9hOA",
+        "From Fear to Fun — Security Talks, Favorite Artiste & School Battles ...",
+      image: "https://www.youtube.com/embed/ehtRJVWQtJw?si=EtzGNcTr1CSOA6H7",
     },
   ];
 
