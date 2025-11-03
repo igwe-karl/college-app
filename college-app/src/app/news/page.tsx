@@ -4,6 +4,24 @@ import NewsTab from "../components/newsTab";
 const Home = () => {
   const videoUrls = [
     {
+      title: "Ep 17: UNIJOS Student Murder Shock + FUTO Lecturer Destroys Project and Fashion Edition",
+      description:
+        "UNIJOS Student Murder Shock + FUTO Lecturer Destroys Project and Fashion Edition",
+      image: "https://www.youtube.com/embed/j87WtRvPztY?si=GZ4gJAFFGNlW5Xli",
+    },
+    {
+      title: "EP 16: From Fear to Fun — Security Talks, Favorite Artiste & School Battles LASPOTECH vs YABATECH",
+      description:
+        "From Fear to Fun — Security Talks, Favorite Artiste & School Battles ...",
+      image: "https://www.youtube.com/embed/ehtRJVWQtJw?si=EtzGNcTr1CSOA6H7",
+    },
+    {
+      title: "Ep 15: Campus Chronicles: ASUU Strike Gist, ₦1K Meal Struggle & Lecturer's Bingo Game",
+      description:
+        "Campus Chronicles: ASUU Strike Gist, ₦1K Meal Struggle & Lecturer's Bingo Game",
+      image: "https://www.youtube.com/embed/Co-wXPfjN7Y?si=Y0RFB6nGB58bzZN0",
+    },
+    {
       title: "Expectation VS Reality: Love on Campus and Battle of Brains",
       description:
         "Love on Campus and Battle of Brains...",
@@ -14,12 +32,6 @@ const Home = () => {
       description:
         "The Uni Hustle: Hacks We Swear By, Lies We Tell & Strikes Endured",
       image: "https://www.youtube.com/embed/mbpMlw7DKZw?si=8LpSp508K9OSNjDS",
-    },
-    {
-      title: "Games week as Mosun and her guest students play games and share their experiences.",
-      description:
-        "Games week as Mosun and her guest students play games and share their experiences.",
-      image: "https://www.youtube.com/embed/o2f7KSdWjZI?si=FCQdolYihd1uoL_0",
     },
     {
       title: "Campus heat: University Ranking, Phone bans etc",
@@ -44,12 +56,6 @@ const Home = () => {
       description:
         "Hammer Time and Malpractice Drama as students suffer some sort of injustice after being acught for malpractice",
       image: "https://www.youtube.com/embed/Fh1_2KPw6go?si=9tF_7gkV4KjehzS8",
-    },
-    {
-      title: "KIDNAP & RESCUED LAW STUDENTS SITUATION IN BENUE?",
-      description:
-        "Law students in Benue were kidnapped and a 50m ransom was requested but all thanks to the police to secure their release.",
-      image: "https://www.youtube.com/embed/IeZ-rDLuyzI?si=2d9_4Wk7-4bCm9D9",
     },
     {
       title: "NELFUND DISBURSEMENT IN SOKOTO & AHMADU BELLO UNIVERSITY ONLY ?",
