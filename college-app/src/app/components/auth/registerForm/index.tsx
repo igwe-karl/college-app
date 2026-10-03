@@ -1,46 +1,54 @@
 "use client";
 
-import { doCreateUserWithEmailAndPassword } from "@/app/firebase/auth";
 import { useState } from "react";
-import { useFormik } from "formik";
-import { Button } from "@/components/ui/button";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema, type RegisterInput } from "@college/shared";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Input } from "@/app/components/input";
-
-const registerSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-});
+import { createClient } from "@/lib/supabase/client";
 
 export default function RegisterPage() {
   const [isRegistering, setIsRegistering] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const router = useRouter();
-  type RegisterFormValues = z.infer<typeof registerSchema>;
+
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
-  } = useForm<RegisterFormValues>({
+  } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       email: "",
       password: "",
+      displayName: "",
     },
   });
 
-  const onSubmit = async (values: RegisterFormValues) => {
-    console.log("values", values);
+  const onSubmit = async (values: RegisterInput) => {
+    setErrorMessage(null);
     try {
       setIsRegistering(true);
-      await doCreateUserWithEmailAndPassword(values.email, values.password);
+      const supabase = createClient();
+      const { error } = await supabase.auth.signUp({
+        email: values.email,
+        password: values.password,
+        options: {
+          data: {
+            display_name: values.displayName,
+          },
+        },
+      });
+      if (error) throw error;
       router.push("/");
-      setIsRegistering(false);
+      router.refresh();
     } catch (error) {
       console.error("Registration failed:", error);
+      setErrorMessage(
+        error instanceof Error ? error.message : "Registration failed"
+      );
     } finally {
       setIsRegistering(false);
     }
@@ -49,26 +57,29 @@ export default function RegisterPage() {
   return (
     <div className="w-full mx-auto">
       <h2 className="text-2xl font-semibold mb-4">Register</h2>
+
+      {errorMessage && (
+        <p className="text-sm text-destructive mb-4">{errorMessage}</p>
+      )}
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 mt-10 w-full md:w-1/2"
       >
-        {/* <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="w-full border px-4 py-2 rounded"
-          required
-        /> */}
+        <div className="w-full md:w-80">
+          <Input
+            type="text"
+            placeholder="Display name"
+            {...register("displayName")}
+            error={errors.displayName?.message}
+          />
+        </div>
 
         <div className="w-full md:w-80">
           <Input
             type="email"
             placeholder="Email Address"
             {...register("email")}
-            required
             error={errors.email?.message}
           />
         </div>
@@ -78,15 +89,11 @@ export default function RegisterPage() {
             type="password"
             placeholder="Password"
             {...register("password")}
-            required
             error={errors.password?.message}
           />
         </div>
         <div className="w-full md:w-80">
-          <Button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-          >
+          <Button type="submit" className="w-full">
             {isRegistering ? "Registering..." : "Register"}
           </Button>
         </div>

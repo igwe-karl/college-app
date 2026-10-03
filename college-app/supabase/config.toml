@@ -1,0 +1,18 @@
+# Minimal Supabase project config for local CLI.
+# Run: npx supabase link --project-ref <your-ref>
+#      npx supabase db push
+
+project_id = "college-road-trip"
+
+[api]
+enabled = true
+port = 54321
+
+[db]
+port = 54322
+major_version = 15
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/callback"]

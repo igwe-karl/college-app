@@ -12,6 +12,7 @@ const nextConfig = {
   // },
   reactStrictMode: true,
   swcMinify: true,
+  transpilePackages: ["@college/shared", "@college/supabase"],
   images: {
     domains: [
       "flagcdn.com",
@@ -24,6 +25,7 @@ const nextConfig = {
       "www.youtube.com",
       "www.youtube-nocookie.com",
       "via.placeholder.com",
+      "lh3.googleusercontent.com",
     ],
   },
 };

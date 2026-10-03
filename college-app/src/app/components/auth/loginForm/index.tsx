@@ -4,78 +4,78 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { loginSchema, type LoginInput } from "@college/shared";
 
 import { Input } from "@/app/components/input";
 import { Button } from "@/app/components/button";
-import { useAuth } from "@/app/context/authContext";
-import {
-  doSignInWithEmailAndPassword,
-  doSignInWithGoogle,
-} from "@/app/firebase/auth";
-
-const loginSchema = z.object({
-  email: z.string().email("Enter a valid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
+import { createClient } from "@/lib/supabase/client";
 
 export default function LoginForm() {
   const router = useRouter();
-  const { userLoggedIn } = useAuth();
   const [isSigningIn, setIsSigningIn] = useState(false);
-
-  type LoginFormValues = z.infer<typeof loginSchema>;
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
-  } = useForm<LoginFormValues>({
+  } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
     },
   });
-  console.log("getValues", getValues());
-  const onSubmit = async (values: LoginFormValues) => {
-    console.log("values", values);
+
+  const onSubmit = async (values: LoginInput) => {
+    setErrorMessage(null);
     try {
       setIsSigningIn(true);
-      await doSignInWithEmailAndPassword(values.email, values.password);
+      const supabase = createClient();
+      const { error } = await supabase.auth.signInWithPassword({
+        email: values.email,
+        password: values.password,
+      });
+      if (error) throw error;
       router.push("/");
+      router.refresh();
     } catch (error) {
       console.error("Login failed:", error);
+      setErrorMessage(
+        error instanceof Error ? error.message : "Login failed"
+      );
     } finally {
       setIsSigningIn(false);
     }
   };
-  console.log("errors", errors);
 
   const onGoogleSignIn = async () => {
+    setErrorMessage(null);
     setIsSigningIn(true);
     try {
-      const { user } = await doSignInWithGoogle();
-  
-      // Optionally log the user info
-      console.log("Google user:", user);
-  
-      // Optionally show toast success message
-      // toast({ title: "Login successful", variant: "success" });
-  
-      router.push("/");
+      const supabase = createClient();
+      const redirectTo = `${window.location.origin}/auth/callback`;
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo },
+      });
+      if (error) throw error;
     } catch (error) {
       console.error("Google login failed:", error);
-      // toast({ title: "Google login failed", variant: "destructive" });
-    } finally {
-      setIsSigningIn(false); // always reset
+      setErrorMessage(
+        error instanceof Error ? error.message : "Google login failed"
+      );
+      setIsSigningIn(false);
     }
   };
 
   return (
     <div className="flex flex-col gap-4 max-w-sm mx-auto">
       <h1 className="text-2xl font-bold text-center">Login</h1>
+
+      {errorMessage && (
+        <p className="text-sm text-destructive text-center">{errorMessage}</p>
+      )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="w-full md:w-80">

@@ -56,10 +56,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-xl font-bold mb-4 text-sidebar-primary">
-              CRTAFRICA
+              Janet 'N' John College
             </h3>
             <p className="text-muted-foreground mb-4">
-              Students go to for gossips, drama, entertainment and everything in
+              Students go to for Admiission news, gossips, drama, entertainment and everything in
               between.
             </p>
             <div className="flex gap-2">
@@ -111,7 +111,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-sidebar-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2025 CRTAFRICA. All rights reserved.</p>
+          <p>&copy; 2025 Janet 'N' John College. All rights reserved.</p>
         </div>
       </div>
     </footer>
