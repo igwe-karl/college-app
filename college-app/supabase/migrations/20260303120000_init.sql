@@ -25,7 +25,7 @@ create table if not exists public.news_posts (
   id uuid primary key default gen_random_uuid(),
   title text not null,
   body text,
-  author_id uuid references public.profiles (id) on set null,
+  author_id uuid references public.profiles (id) on delete set null,
   published_at timestamptz not null default now()
 );
 

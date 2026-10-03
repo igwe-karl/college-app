@@ -13,7 +13,7 @@ Database migrations live in `supabase/migrations/`.
 
 ## Prerequisites
 
-- Node.js 18+
+- **Node.js 20+** (required by `@supabase/supabase-js`; use `nvm use` — see `.nvmrc`)
 - A [Supabase](https://supabase.com) project
 
 ## Setup
@@ -37,23 +37,47 @@ Database migrations live in `supabase/migrations/`.
    - Site URL: `http://localhost:3000`
    - Redirect URLs: `http://localhost:3000/auth/callback`
 
-4. Enable **Email** and (optional) **Google** providers under Authentication → Providers.
+4. Enable **Email** under Authentication → Providers.
 
-5. Install dependencies from the repo root:
+5. **Google sign-in (optional)** — fixes `Unsupported provider: provider is not enabled`:
+
+   1. [Google Cloud Console](https://console.cloud.google.com/) → APIs & Services → **Credentials** → Create **OAuth client ID** (Web application).
+   2. **Authorized redirect URIs** — add exactly (replace `YOUR_PROJECT_REF`):
+      ```text
+      https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback
+      ```
+   3. Supabase → **Authentication → Providers → Google** → Enable, paste **Client ID** and **Client Secret**.
+   4. Supabase → **Authentication → URL configuration** — ensure redirect URLs include:
+      ```text
+      http://localhost:3000/auth/callback
+      ```
+   5. In `.env.local` set:
+      ```bash
+      NEXT_PUBLIC_GOOGLE_AUTH_ENABLED=true
+      ```
+   6. Restart `npm run dev`.
+
+6. Install dependencies from the repo root (Node 20+):
 
    ```bash
+   nvm use
    npm install
    ```
 
 ## Development
 
 ```bash
-# Frontend only (port 3000)
+# Frontend (port 3000) — login/register talk to Supabase directly, not :4000
 npm run dev
 
-# API only (port 4000)
+# REST API (port 4000) — news/profile routes; run in a second terminal
 npm run dev:api
 ```
+
+Verify the API: open [http://localhost:4000/health](http://localhost:4000/health) (should return `{"ok":true}`).  
+A **404 on `http://localhost:4000/` alone** used to mean no root route; **`GET /` now returns API info**. If you still see 404, the API process is probably not running — start it with `npm run dev:api`.
+
+**Login, register, and Google OAuth do not use `localhost:4000`.** They use your Supabase project URL from `NEXT_PUBLIC_SUPABASE_*` in `.env.local`. A broken API does not block auth unless you call `apiFetch` yourself.
 
 ## API endpoints
 

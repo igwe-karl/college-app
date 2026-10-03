@@ -16,7 +16,29 @@ app.use(
   })
 );
 
+app.get("/", (c) =>
+  c.json({
+    ok: true,
+    service: "@college/api",
+    endpoints: {
+      health: "GET /health",
+      news: "GET /api/news, POST /api/news (auth)",
+      profile: "GET /api/profile/me (auth)",
+    },
+  })
+);
+
 app.get("/health", (c) => c.json({ ok: true }));
+
+app.notFound((c) =>
+  c.json(
+    {
+      error: "Not found",
+      hint: "Try GET /health or GET /api/news",
+    },
+    404
+  )
+);
 
 app.route("/api/news", news);
 app.route("/api/profile", profile);

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ProfilePage() {
   const { currentUser, userLoggedIn, signOut } = useAuth();
-
+console.log(currentUser && userLoggedIn && "user logged in");
   if (!userLoggedIn || !currentUser) {
     return (
       <div className="mx-auto max-w-md space-y-4 text-center">

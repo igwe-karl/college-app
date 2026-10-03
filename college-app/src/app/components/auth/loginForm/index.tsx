@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginInput } from "@college/shared";
@@ -9,11 +9,22 @@ import { loginSchema, type LoginInput } from "@college/shared";
 import { Input } from "@/app/components/input";
 import { Button } from "@/app/components/button";
 import { createClient } from "@/lib/supabase/client";
+import { formatAuthCallbackError, formatAuthError } from "@/lib/auth-errors";
+import { isGoogleAuthEnabled } from "@/lib/auth-config";
 
 export default function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const googleEnabled = isGoogleAuthEnabled();
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const callbackError = formatAuthCallbackError(searchParams.get("error"));
+    if (callbackError) {
+      setErrorMessage(callbackError);
+    }
+  }, [searchParams]);
 
   const {
     register,
@@ -41,30 +52,43 @@ export default function LoginForm() {
       router.refresh();
     } catch (error) {
       console.error("Login failed:", error);
-      setErrorMessage(
-        error instanceof Error ? error.message : "Login failed"
-      );
+      setErrorMessage(formatAuthError(error));
     } finally {
       setIsSigningIn(false);
     }
   };
 
   const onGoogleSignIn = async () => {
+    if (!googleEnabled) {
+      setErrorMessage(
+        "Google sign-in is turned off in this environment. Set NEXT_PUBLIC_GOOGLE_AUTH_ENABLED=true in .env.local after enabling Google in Supabase."
+      );
+      return;
+    }
+
     setErrorMessage(null);
     setIsSigningIn(true);
     try {
       const supabase = createClient();
       const redirectTo = `${window.location.origin}/auth/callback`;
-      const { error } = await supabase.auth.signInWithOAuth({
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo },
+        options: {
+          redirectTo,
+          queryParams: {
+            prompt: "select_account",
+          },
+        },
       });
       if (error) throw error;
+      if (data?.url) {
+        window.location.assign(data.url);
+        return;
+      }
+      throw new Error("Could not start Google sign-in.");
     } catch (error) {
       console.error("Google login failed:", error);
-      setErrorMessage(
-        error instanceof Error ? error.message : "Google login failed"
-      );
+      setErrorMessage(formatAuthError(error));
       setIsSigningIn(false);
     }
   };
@@ -100,9 +124,23 @@ export default function LoginForm() {
           {isSigningIn ? "Signing in..." : "Sign In"}
         </Button>
 
-        <Button type="button" onClick={onGoogleSignIn} variant="outline">
-          Sign in with Google
-        </Button>
+        {googleEnabled ? (
+          <Button
+            type="button"
+            onClick={onGoogleSignIn}
+            variant="outline"
+            disabled={isSigningIn}
+          >
+            Sign in with Google
+          </Button>
+        ) : (
+          <p className="text-xs text-muted-foreground text-center">
+            Google sign-in appears after you enable the Google provider in
+            Supabase and set{" "}
+            <code className="text-xs">NEXT_PUBLIC_GOOGLE_AUTH_ENABLED=true</code>{" "}
+            in <code className="text-xs">.env.local</code>.
+          </p>
+        )}
       </form>
     </div>
   );
