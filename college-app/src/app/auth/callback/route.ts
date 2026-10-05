@@ -18,13 +18,28 @@ export async function GET(request: Request) {
     );
   }
 
-  if (code) {
-    const supabase = await createClient();
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) {
-      return NextResponse.redirect(`${origin}${next}`);
-    }
+  if (!code) {
+    return NextResponse.redirect(`${origin}/login?error=auth_callback_failed`);
   }
 
-  return NextResponse.redirect(`${origin}/login?error=auth_callback_failed`);
+  try {
+    const supabase = await createClient();
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+    if (error) {
+      console.error("[auth/callback] exchangeCodeForSession:", error.message);
+      const isInvalidKey =
+        error.message.toLowerCase().includes("invalid api key") ||
+        error.message.toLowerCase().includes("invalid jwt");
+      const errorParam = isInvalidKey ? "invalid_api_key" : "auth_callback_failed";
+      return NextResponse.redirect(
+        `${origin}/login?error=${encodeURIComponent(errorParam)}`
+      );
+    }
+
+    return NextResponse.redirect(`${origin}${next}`);
+  } catch (err) {
+    console.error("[auth/callback] unexpected error:", err);
+    return NextResponse.redirect(`${origin}/login?error=auth_callback_failed`);
+  }
 }

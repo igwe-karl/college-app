@@ -10,10 +10,11 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "next dev",
-    "dev:api": "npm run dev -w @college/api",
-    "dev:all": "npm run dev & npm run dev:api",
-    "build": "next build",
+    "dev": "npm run build:shared && next dev",
+    "dev:api": "npm run build:shared && npm run dev -w @college/api",
+    "dev:all": "npm run build:shared && npm run dev & npm run dev:api",
+    "build:shared": "npm run build -w @college/shared",
+    "build": "npm run build:shared && next build",
     "build:api": "npm run build -w @college/api",
     "start": "next start",
     "lint": "next lint",

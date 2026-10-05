@@ -11,6 +11,12 @@ import { Button } from "@/app/components/button";
 import { createClient } from "@/lib/supabase/client";
 import { formatAuthCallbackError, formatAuthError } from "@/lib/auth-errors";
 import { isGoogleAuthEnabled } from "@/lib/auth-config";
+import { getAuthCallbackUrl } from "@/lib/auth-redirect";
+import {
+  clearOAuthHashFromUrl,
+  formatOAuthHashError,
+  parseOAuthHashParams,
+} from "@/lib/auth-oauth-hash";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -20,6 +26,14 @@ export default function LoginForm() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
+    const hashParams = parseOAuthHashParams();
+    if (hashParams?.get("error")) {
+      const hashError = formatOAuthHashError(hashParams);
+      if (hashError) setErrorMessage(hashError);
+      clearOAuthHashFromUrl();
+      return;
+    }
+
     const callbackError = formatAuthCallbackError(searchParams.get("error"));
     if (callbackError) {
       setErrorMessage(callbackError);
@@ -70,7 +84,7 @@ export default function LoginForm() {
     setIsSigningIn(true);
     try {
       const supabase = createClient();
-      const redirectTo = `${window.location.origin}/auth/callback`;
+      const redirectTo = getAuthCallbackUrl();
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {

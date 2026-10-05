@@ -47,15 +47,34 @@ Database migrations live in `supabase/migrations/`.
       https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback
       ```
    3. Supabase → **Authentication → Providers → Google** → Enable, paste **Client ID** and **Client Secret**.
-   4. Supabase → **Authentication → URL configuration** — ensure redirect URLs include:
-      ```text
-      http://localhost:3000/auth/callback
-      ```
+   4. Supabase → **Authentication → URL configuration**:
+      - **Site URL:** `http://localhost:3000`
+      - **Redirect URLs** (add every line you use):
+        ```text
+        http://localhost:3000/auth/callback
+        http://127.0.0.1:3000/auth/callback
+        ```
+      - Set `NEXT_PUBLIC_SITE_URL=http://localhost:3000` in `.env.local` so OAuth always uses the same callback (even if you accidentally open `127.0.0.1`).
+
+   **Redirect URL mismatch?** Two different places must agree:
+   - **Google Cloud** → OAuth client → *Authorized redirect URIs* — **only** Supabase’s callback (not your Next.js URL):
+     ```text
+     https://elzetejzgsczaeqvvtxk.supabase.co/auth/v1/callback
+     ```
+   - **Supabase** → Redirect URLs — your **Next.js** callback (after Supabase finishes with Google):
+     ```text
+     http://localhost:3000/auth/callback
+     ```
    5. In `.env.local` set:
       ```bash
       NEXT_PUBLIC_GOOGLE_AUTH_ENABLED=true
       ```
    6. Restart `npm run dev`.
+
+   **“Unable to exchange external code” / `server_error` after Google:** Supabase could not swap Google’s code for tokens. Fix **Supabase → Authentication → Providers → Google**:
+   - **Client ID** = same Web client as in Google Cloud Credentials.
+   - **Client Secret** = current secret from that same client (regenerate in Google Cloud if needed, paste into Supabase, Save).
+   - Do not rely on `NEXT_PUBLIC_GOOGLE_CLIENT_ID` in `.env` — Supabase uses dashboard values only.
 
 6. Install dependencies from the repo root (Node 20+):
 
@@ -66,13 +85,23 @@ Database migrations live in `supabase/migrations/`.
 
 ## Development
 
-```bash
-# Frontend (port 3000) — login/register talk to Supabase directly, not :4000
-npm run dev
+**One server is enough for most work** (login, register, Google, pages):
 
-# REST API (port 4000) — news/profile routes; run in a second terminal
-npm run dev:api
+```bash
+npm run dev          # Next.js only → http://localhost:3000
 ```
+
+That talks to **Supabase** directly. You do **not** need the API for auth.
+
+**Second server** — only when you use the REST API (`/api/news`, `/api/profile/me`, or `apiFetch` in the web app):
+
+```bash
+npm run dev:api      # Hono API → http://localhost:4000
+# or both:
+npm run dev:all
+```
+
+`npm run dev` and `npm run dev:api` automatically rebuild `@college/shared` first (fixes ESM export issues on Node 20).
 
 Verify the API: open [http://localhost:4000/health](http://localhost:4000/health) (should return `{"ok":true}`).  
 A **404 on `http://localhost:4000/` alone** used to mean no root route; **`GET /` now returns API info**. If you still see 404, the API process is probably not running — start it with `npm run dev:api`.
