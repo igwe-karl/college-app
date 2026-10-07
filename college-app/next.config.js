@@ -26,6 +26,7 @@ const nextConfig = {
       "www.youtube-nocookie.com",
       "via.placeholder.com",
       "lh3.googleusercontent.com",
+      "images.unsplash.com",
     ],
   },
 };
