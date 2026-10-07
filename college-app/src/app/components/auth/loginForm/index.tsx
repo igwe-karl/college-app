@@ -62,7 +62,7 @@ export default function LoginForm() {
         password: values.password,
       });
       if (error) throw error;
-      router.push("/");
+      router.push("/campus");
       router.refresh();
     } catch (error) {
       console.error("Login failed:", error);

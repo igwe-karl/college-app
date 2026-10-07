@@ -32,10 +32,9 @@ export default function ProfilePage() {
     );
   }
 
+  const meta = currentUser.user_metadata;
   const displayName =
-    currentUser.user_metadata?.display_name ??
-    currentUser.user_metadata?.full_name ??
-    profileDummy.displayName;
+    meta?.display_name ?? meta?.full_name ?? profileDummy.displayName;
 
   const avatarSrc =
     currentUser.user_metadata?.avatar_url ??
@@ -110,11 +109,17 @@ export default function ProfilePage() {
           <CardContent>
             <dl className="space-y-3 text-sm">
               <InfoRow label="Email" value={currentUser.email ?? "—"} />
-              <InfoRow label="University" value={profileDummy.info.university} />
-              <InfoRow label="Major" value={profileDummy.info.major} />
-              <InfoRow label="Year" value={profileDummy.info.year} />
+              <InfoRow
+                label="University"
+                value={meta?.university ?? profileDummy.info.university}
+              />
+              <InfoRow label="Major" value={meta?.major ?? profileDummy.info.major} />
+              <InfoRow
+                label="Year"
+                value={meta?.year_level ?? profileDummy.info.year}
+              />
               <InfoRow label="Location" value={profileDummy.info.location} />
-              <InfoRow label="Phone" value={profileDummy.info.phone} />
+              <InfoRow label="Phone" value={meta?.phone ?? profileDummy.info.phone} />
               <InfoRow label="Member since" value={profileDummy.info.memberSince} />
             </dl>
           </CardContent>

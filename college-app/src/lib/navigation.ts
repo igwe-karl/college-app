@@ -1,5 +1,6 @@
 import {
   Building2,
+  CalendarDays,
   Clapperboard,
   Newspaper,
   User,
@@ -10,13 +11,13 @@ export type AppNavItem = {
   label: string;
   href: string;
   icon: LucideIcon;
-  /** Match exact path only (e.g. campus home) */
   exact?: boolean;
 };
 
 export const appNavItems: AppNavItem[] = [
   { label: "Campus", href: "/campus", icon: Building2, exact: true },
   { label: "News", href: "/news", icon: Newspaper },
+  { label: "Events", href: "/events", icon: CalendarDays },
   { label: "Profile", href: "/profile", icon: User, exact: true },
   { label: "Media", href: "/entertainment", icon: Clapperboard },
 ];
@@ -28,22 +29,22 @@ export function isNavItemActive(pathname: string, item: AppNavItem): boolean {
   return pathname === item.href || pathname.startsWith(`${item.href}/`);
 }
 
-/** Routes that use the full app shell (sidebar + top bar). */
-export const appShellRoutes = [
-  "/",
+/** Routes that may use the authenticated app shell (sidebar + top bar). */
+export const authenticatedShellRoutes = [
   "/campus",
   "/news",
+  "/events",
   "/profile",
   "/entertainment",
   "/contact",
   "/company",
 ];
 
-export function usesAppShell(pathname: string): boolean {
+export function usesAuthenticatedShell(pathname: string): boolean {
   if (pathname.startsWith("/login") || pathname.startsWith("/register")) {
     return false;
   }
-  return appShellRoutes.some(
+  return authenticatedShellRoutes.some(
     (route) => pathname === route || pathname.startsWith(`${route}/`)
   );
 }

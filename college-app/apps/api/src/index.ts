@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import news from "./routes/news.js";
 import profile from "./routes/profile.js";
+import events from "./routes/events.js";
 
 const app = new Hono();
 
@@ -24,6 +25,7 @@ app.get("/", (c) =>
       health: "GET /health",
       news: "GET /api/news, POST /api/news (auth)",
       profile: "GET /api/profile/me (auth)",
+      events: "GET /api/events, POST /api/events (auth)",
     },
   })
 );
@@ -42,6 +44,7 @@ app.notFound((c) =>
 
 app.route("/api/news", news);
 app.route("/api/profile", profile);
+app.route("/api/events", events);
 
 const port = Number(process.env.PORT ?? 4000);
 

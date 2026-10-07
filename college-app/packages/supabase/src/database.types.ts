@@ -14,21 +14,80 @@ export type Database = {
           id: string;
           display_name: string | null;
           avatar_url: string | null;
+          university: string | null;
+          major: string | null;
+          year_level: string | null;
+          phone: string | null;
+          bio: string | null;
           created_at: string;
         };
         Insert: {
           id: string;
           display_name?: string | null;
           avatar_url?: string | null;
+          university?: string | null;
+          major?: string | null;
+          year_level?: string | null;
+          phone?: string | null;
+          bio?: string | null;
           created_at?: string;
         };
         Update: {
           id?: string;
           display_name?: string | null;
           avatar_url?: string | null;
+          university?: string | null;
+          major?: string | null;
+          year_level?: string | null;
+          phone?: string | null;
+          bio?: string | null;
           created_at?: string;
         };
         Relationships: [];
+      };
+      campus_events: {
+        Row: {
+          id: string;
+          title: string;
+          description: string | null;
+          event_date: string;
+          event_time: string | null;
+          location: string | null;
+          category: string;
+          organizer_id: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          title: string;
+          description?: string | null;
+          event_date: string;
+          event_time?: string | null;
+          location?: string | null;
+          category?: string;
+          organizer_id?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          title?: string;
+          description?: string | null;
+          event_date?: string;
+          event_time?: string | null;
+          location?: string | null;
+          category?: string;
+          organizer_id?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "campus_events_organizer_id_fkey";
+            columns: ["organizer_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
       };
       news_posts: {
         Row: {

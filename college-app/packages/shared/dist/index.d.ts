@@ -1,3 +1,3 @@
-export { loginSchema, registerSchema, newsPostSchema, type LoginInput, type RegisterInput, type NewsPostInput, } from "./schemas.js";
-export type { Profile, NewsPost } from "./types.js";
+export { loginSchema, registerSchema, newsPostSchema, eventSchema, type LoginInput, type RegisterInput, type NewsPostInput, type EventInput, } from "./schemas.js";
+export type { Profile, NewsPost, CampusEvent } from "./types.js";
 //# sourceMappingURL=index.d.ts.map

@@ -1,1 +1,1 @@
-export { loginSchema, registerSchema, newsPostSchema, } from "./schemas.js";
+export { loginSchema, registerSchema, newsPostSchema, eventSchema, } from "./schemas.js";
