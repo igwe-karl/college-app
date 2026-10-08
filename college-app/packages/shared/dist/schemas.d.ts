@@ -9,7 +9,7 @@ export declare const loginSchema: z.ZodObject<{
     email: string;
     password: string;
 }>;
-export declare const registerSchema: z.ZodObject<{
+export declare const registerSchema: z.ZodEffects<z.ZodObject<{
     email: z.ZodString;
     password: z.ZodString;
     displayName: z.ZodString;
@@ -18,6 +18,7 @@ export declare const registerSchema: z.ZodObject<{
     yearLevel: z.ZodString;
     phone: z.ZodString;
     bio: z.ZodOptional<z.ZodString>;
+    isRep: z.ZodDefault<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
     email: string;
     password: string;
@@ -26,6 +27,7 @@ export declare const registerSchema: z.ZodObject<{
     major: string;
     yearLevel: string;
     phone: string;
+    isRep: boolean;
     bio?: string | undefined;
 }, {
     email: string;
@@ -36,6 +38,27 @@ export declare const registerSchema: z.ZodObject<{
     yearLevel: string;
     phone: string;
     bio?: string | undefined;
+    isRep?: boolean | undefined;
+}>, {
+    email: string;
+    password: string;
+    displayName: string;
+    university: string;
+    major: string;
+    yearLevel: string;
+    phone: string;
+    isRep: boolean;
+    bio?: string | undefined;
+}, {
+    email: string;
+    password: string;
+    displayName: string;
+    university: string;
+    major: string;
+    yearLevel: string;
+    phone: string;
+    bio?: string | undefined;
+    isRep?: boolean | undefined;
 }>;
 export declare const newsPostSchema: z.ZodObject<{
     title: z.ZodString;

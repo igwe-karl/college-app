@@ -1,20 +1,41 @@
+import Link from "next/link";
 import { Suspense } from "react";
 import Login from "../components/auth/loginForm";
+import { AuthPageShell } from "../components/auth/auth-page-shell";
 
 function LoginFallback() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <p className="text-muted-foreground">Loading…</p>
-    </main>
+    <AuthPageShell
+      accent="login"
+      title="Welcome back"
+      subtitle="Sign in to your campus feed, events, and profile."
+    >
+      <p className="text-center text-muted-foreground">Loading…</p>
+    </AuthPageShell>
   );
 }
 
 export default function LoginPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Suspense fallback={<LoginFallback />}>
+    <Suspense fallback={<LoginFallback />}>
+      <AuthPageShell
+        accent="login"
+        title="Welcome back"
+        subtitle="Sign in to your campus feed, events, and profile."
+        footer={
+          <>
+            New here?{" "}
+            <Link
+              href="/register"
+              className="font-semibold text-violet-600 hover:text-violet-700 dark:text-violet-400"
+            >
+              Create an account
+            </Link>
+          </>
+        }
+      >
         <Login />
-      </Suspense>
-    </main>
+      </AuthPageShell>
+    </Suspense>
   );
 }

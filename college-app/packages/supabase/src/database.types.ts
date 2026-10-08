@@ -19,6 +19,7 @@ export type Database = {
           year_level: string | null;
           phone: string | null;
           bio: string | null;
+          is_rep: boolean;
           created_at: string;
         };
         Insert: {
@@ -30,6 +31,7 @@ export type Database = {
           year_level?: string | null;
           phone?: string | null;
           bio?: string | null;
+          is_rep?: boolean;
           created_at?: string;
         };
         Update: {
@@ -41,6 +43,7 @@ export type Database = {
           year_level?: string | null;
           phone?: string | null;
           bio?: string | null;
+          is_rep?: boolean;
           created_at?: string;
         };
         Relationships: [];

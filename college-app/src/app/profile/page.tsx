@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Pencil, User } from "lucide-react";
+import { BadgeCheck, Pencil, User } from "lucide-react";
 import { useAuth } from "@/app/context/authContext";
 import { Button } from "@/components/ui/button";
 import {
@@ -36,6 +36,10 @@ export default function ProfilePage() {
   const meta = currentUser.user_metadata;
   const displayName =
     meta?.display_name ?? meta?.full_name ?? profileDummy.displayName;
+  const isRep = Boolean(meta?.is_rep);
+  const repSchool =
+    (meta?.rep_university as string | undefined) ??
+    (meta?.university as string | undefined);
 
   const avatarSrc =
     currentUser.user_metadata?.avatar_url ??
@@ -82,7 +86,16 @@ export default function ProfilePage() {
           </div>
 
           <div className="mt-4 space-y-1">
-            <h1 className="text-2xl font-bold tracking-tight">{displayName}</h1>
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="text-2xl font-bold tracking-tight">{displayName}</h1>
+              {isRep && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-semibold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">
+                  <BadgeCheck className="h-3.5 w-3.5" />
+                  Campus rep
+                  {repSchool ? ` · ${repSchool}` : null}
+                </span>
+              )}
+            </div>
             <p className="text-muted-foreground">{profileDummy.handle}</p>
           </div>
         </div>
