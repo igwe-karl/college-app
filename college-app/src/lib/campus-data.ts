@@ -1,7 +1,7 @@
 export const campusHome = {
   hero: {
     title: "Your campus, in one place",
-    subtitle: "Updates, events, and quick links for Janet 'N' John College",
+    subtitle: "Updates, events, and quick links for University of Lagos",
   },
   latestUpdates: [
     {

@@ -49,7 +49,7 @@ export default function LandingPage() {
 
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl ring-4 ring-white/50 dark:ring-white/10">
             <Image
-              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80"
+              src="/assets/image/campus_home.jpg"
               alt="Students on campus"
               fill
               className="object-cover"

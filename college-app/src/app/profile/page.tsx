@@ -14,10 +14,11 @@ import {
 } from "@/components/ui/card";
 import { profileDummy } from "@/lib/profile-dummy-data";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
   const { currentUser, userLoggedIn, signOut } = useAuth();
-
+  const router = useRouter();
   if (!userLoggedIn || !currentUser) {
     return (
       <div className="mx-auto max-w-md space-y-4 text-center py-12">
@@ -171,7 +172,12 @@ export default function ProfilePage() {
       </section>
 
       <div className="flex justify-center pt-2">
-        <Button variant="outline" onClick={() => signOut()}>
+        <Button variant="outline"
+          type="button"
+          onClick={() => {
+            signOut();
+            router.push("/");
+          }}>
           Sign out
         </Button>
       </div>

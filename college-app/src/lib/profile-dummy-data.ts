@@ -8,7 +8,7 @@ export const profileDummy = {
   about:
     "Final-year Computer Science student passionate about campus media, student leadership, and building community through CRT Africa. Always looking for the next campus story to tell.",
   info: {
-    university: "Janet 'N' John College",
+    university: "University of Lagos",
     major: "Computer Science",
     year: "400 Level",
     location: "Lagos, Nigeria",

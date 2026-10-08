@@ -51,7 +51,7 @@ const Header = () => {
       <div className="flex flex-row items-start justify-start p-4 space-x-4">
         <div>
           <p className="text-white md:text-6xl text-2xl font-bold ">
-            Welcome to Janet 'N' John College 
+            College Road Trip Africa
           </p>
           <p className="text-white text-sm italic mt-2">
             Welcome to the home of college news, gossips and information

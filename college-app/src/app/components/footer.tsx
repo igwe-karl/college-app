@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export default function Footer() {
   const router = useRouter();
-  
+
   const companyItems = [
     {
       title: "Company",
@@ -56,7 +56,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-xl font-bold mb-4 text-sidebar-primary">
-              Janet 'N' John College
+              College Road Trip Africa
             </h3>
             <p className="text-muted-foreground mb-4">
               Students go to for Admiission news, gossips, drama, entertainment and everything in
@@ -69,7 +69,7 @@ export default function Footer() {
                   size={1.5}
                   iconColor={icon.iconColor}
                   onClick={() => window.open(icon.link, "_blank")}
-                  // spin
+                // spin
                 />
               ))}
             </div>
@@ -111,7 +111,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-sidebar-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2025 Janet 'N' John College. All rights reserved.</p>
+          <p>&copy; 2025 College Road trip Africa. All rights reserved.</p>
         </div>
       </div>
     </footer>
