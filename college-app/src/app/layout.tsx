@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header";
-import Footer from "./components/footer";
 import { AuthProvider } from "./context/authContext";
+import { LayoutShell } from "./components/layout-shell";
+import { ThemeProvider } from "@/components/navigation/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,18 +18,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/assets/image/favicon.jpg" sizes="16x16" />
       </head>
       <body className={inter.className}>
-        <div className="min-h-screen">
-          <Header />
+        <ThemeProvider>
           <AuthProvider>
-            <main className="min-h-screen w-full">{children}</main>
+            <LayoutShell>{children}</LayoutShell>
           </AuthProvider>
-          <Footer />
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );

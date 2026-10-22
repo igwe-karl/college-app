@@ -1,0 +1,28 @@
+{
+  "name": "@college/api",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@college/shared": "*",
+    "@college/supabase": "*",
+    "@hono/node-server": "^1.14.1",
+    "@supabase/supabase-js": "^2.49.8",
+    "hono": "^4.7.10",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsx": "^4.19.4",
+    "typescript": "^5"
+  }
+}
