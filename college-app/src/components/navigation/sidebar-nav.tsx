@@ -4,15 +4,18 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { GraduationCap, LogIn, LogOut, User } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { appNavItems, isNavItemActive } from "@/lib/navigation";
+import { adminNavItem, appNavItems, isNavItemActive } from "@/lib/navigation";
 import { useAuth } from "@/app/context/authContext";
+import { useCurrentProfile } from "@/hooks/use-current-profile";
 import { Button } from "@/app/components/button";
 
 export function SidebarNav() {
   const pathname = usePathname();
 
   const { currentUser, signOut } = useAuth();
+  const { isAdmin } = useCurrentProfile();
   const router = useRouter();
+  const navItems = isAdmin ? [...appNavItems, adminNavItem] : appNavItems;
   
   return (
     <aside className="hidden md:flex fixed left-0 top-0 z-40 h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground shadow-sm">
@@ -32,7 +35,7 @@ export function SidebarNav() {
       </Link>
 
       <nav className="flex-1 flex flex-col gap-1 p-3">
-        {appNavItems.map((item) => {
+        {navItems.map((item) => {
           const active = isNavItemActive(pathname, item);
           const Icon = item.icon;
 

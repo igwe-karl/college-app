@@ -57,7 +57,8 @@ export default function RegisterPage() {
             year_level: values.yearLevel,
             phone: values.phone,
             bio: values.bio ?? "",
-            is_rep: values.isRep,
+            is_rep: false,
+            requested_rep: values.isRep,
             rep_university: values.isRep ? values.university : null,
           },
         },
@@ -161,8 +162,8 @@ export default function RegisterPage() {
                 Campus representative
               </p>
               <p className="text-xs text-emerald-800/80 dark:text-emerald-200/80">
-                Turn on if you represent your school on Campus Hub. Your rep tag
-                is linked to the university above.
+                Turn on to request campus-rep status for the university above.
+                An admin reviews the request before the badge goes live.
               </p>
             </div>
             <Controller

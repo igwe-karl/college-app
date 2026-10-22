@@ -7,6 +7,8 @@ export type Profile = {
   year_level: string | null;
   phone: string | null;
   bio: string | null;
+  is_rep: boolean;
+  role: "student" | "admin";
   created_at: string;
 };
 

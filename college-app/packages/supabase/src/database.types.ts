@@ -20,6 +20,7 @@ export type Database = {
           phone: string | null;
           bio: string | null;
           is_rep: boolean;
+          role: "student" | "admin";
           created_at: string;
         };
         Insert: {
@@ -32,6 +33,7 @@ export type Database = {
           phone?: string | null;
           bio?: string | null;
           is_rep?: boolean;
+          role?: "student" | "admin";
           created_at?: string;
         };
         Update: {
@@ -44,6 +46,7 @@ export type Database = {
           phone?: string | null;
           bio?: string | null;
           is_rep?: boolean;
+          role?: "student" | "admin";
           created_at?: string;
         };
         Relationships: [];
@@ -124,9 +127,158 @@ export type Database = {
           },
         ];
       };
+      rep_requests: {
+        Row: {
+          id: string;
+          user_id: string;
+          university: string;
+          status: "pending" | "approved" | "rejected";
+          created_at: string;
+          reviewed_at: string | null;
+          reviewed_by: string | null;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          university: string;
+          status?: "pending" | "approved" | "rejected";
+          created_at?: string;
+          reviewed_at?: string | null;
+          reviewed_by?: string | null;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          university?: string;
+          status?: "pending" | "approved" | "rejected";
+          created_at?: string;
+          reviewed_at?: string | null;
+          reviewed_by?: string | null;
+        };
+        Relationships: [];
+      };
+      conversations: {
+        Row: {
+          id: string;
+          type: "direct" | "school";
+          university: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          type?: "direct" | "school";
+          university?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          type?: "direct" | "school";
+          university?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      conversation_participants: {
+        Row: {
+          conversation_id: string;
+          user_id: string;
+          last_read_at: string | null;
+          joined_at: string;
+        };
+        Insert: {
+          conversation_id: string;
+          user_id: string;
+          last_read_at?: string | null;
+          joined_at?: string;
+        };
+        Update: {
+          conversation_id?: string;
+          user_id?: string;
+          last_read_at?: string | null;
+          joined_at?: string;
+        };
+        Relationships: [];
+      };
+      messages: {
+        Row: {
+          id: string;
+          conversation_id: string;
+          sender_id: string;
+          body: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          conversation_id: string;
+          sender_id: string;
+          body: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          conversation_id?: string;
+          sender_id?: string;
+          body?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+      media_uploads: {
+        Row: {
+          id: string;
+          uploader_id: string;
+          title: string;
+          description: string | null;
+          file_url: string;
+          storage_path: string;
+          mime_type: string | null;
+          status: "pending" | "approved" | "rejected";
+          created_at: string;
+          reviewed_at: string | null;
+          reviewed_by: string | null;
+        };
+        Insert: {
+          id?: string;
+          uploader_id: string;
+          title: string;
+          description?: string | null;
+          file_url: string;
+          storage_path: string;
+          mime_type?: string | null;
+          status?: "pending" | "approved" | "rejected";
+          created_at?: string;
+          reviewed_at?: string | null;
+          reviewed_by?: string | null;
+        };
+        Update: {
+          id?: string;
+          uploader_id?: string;
+          title?: string;
+          description?: string | null;
+          file_url?: string;
+          storage_path?: string;
+          mime_type?: string | null;
+          status?: "pending" | "approved" | "rejected";
+          created_at?: string;
+          reviewed_at?: string | null;
+          reviewed_by?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      is_admin: { Args: Record<PropertyKey, never>; Returns: boolean };
+      can_access_conversation: { Args: { conv_id: string }; Returns: boolean };
+      get_or_create_direct_conversation: {
+        Args: { other_user_id: string };
+        Returns: string;
+      };
+      get_or_create_school_conversation: {
+        Args: Record<PropertyKey, never>;
+        Returns: string;
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };

@@ -2,7 +2,9 @@ import {
   Building2,
   CalendarDays,
   Clapperboard,
+  MessageCircle,
   Newspaper,
+  Shield,
   User,
   type LucideIcon,
 } from "lucide-react";
@@ -18,9 +20,16 @@ export const appNavItems: AppNavItem[] = [
   { label: "Campus", href: "/campus", icon: Building2, exact: true },
   { label: "News", href: "/news", icon: Newspaper },
   { label: "Events", href: "/events", icon: CalendarDays },
-  { label: "Profile", href: "/profile", icon: User, exact: true },
+  { label: "Messages", href: "/messages", icon: MessageCircle },
   { label: "Media", href: "/entertainment", icon: Clapperboard },
+  { label: "Profile", href: "/profile", icon: User, exact: true },
 ];
+
+export const adminNavItem: AppNavItem = {
+  label: "Admin",
+  href: "/admin",
+  icon: Shield,
+};
 
 export function isNavItemActive(pathname: string, item: AppNavItem): boolean {
   if (item.exact) {
@@ -34,8 +43,10 @@ export const authenticatedShellRoutes = [
   "/campus",
   "/news",
   "/events",
+  "/messages",
   "/profile",
   "/entertainment",
+  "/admin",
   "/contact",
   "/company",
 ];

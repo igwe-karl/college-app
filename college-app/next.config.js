@@ -27,6 +27,7 @@ const nextConfig = {
       "via.placeholder.com",
       "lh3.googleusercontent.com",
       "images.unsplash.com",
+      "elzetejzgsczaeqvvtxk.supabase.co",
     ],
   },
 };

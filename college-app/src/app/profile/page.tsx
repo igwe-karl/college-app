@@ -4,6 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { BadgeCheck, Pencil, User } from "lucide-react";
 import { useAuth } from "@/app/context/authContext";
+import { useCurrentProfile } from "@/hooks/use-current-profile";
+import { createClient } from "@/lib/supabase/client";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,7 +21,22 @@ import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
   const { currentUser, userLoggedIn, signOut } = useAuth();
+  const { profile, isRep, isAdmin } = useCurrentProfile();
+  const [repStatus, setRepStatus] = useState<string | null>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    if (!currentUser) return;
+    const supabase = createClient();
+    supabase
+      .from("rep_requests")
+      .select("status")
+      .eq("user_id", currentUser.id)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .maybeSingle()
+      .then(({ data }) => setRepStatus(data?.status ?? null));
+  }, [currentUser]);
   if (!userLoggedIn || !currentUser) {
     return (
       <div className="mx-auto max-w-md space-y-4 text-center py-12">
@@ -35,11 +53,11 @@ export default function ProfilePage() {
 
   const meta = currentUser.user_metadata;
   const displayName =
-    meta?.display_name ?? meta?.full_name ?? profileDummy.displayName;
-  const isRep = Boolean(meta?.is_rep);
-  const repSchool =
-    (meta?.rep_university as string | undefined) ??
-    (meta?.university as string | undefined);
+    profile?.display_name ??
+    meta?.display_name ??
+    meta?.full_name ??
+    profileDummy.displayName;
+  const repSchool = profile?.university ?? (meta?.university as string | undefined);
 
   const avatarSrc =
     currentUser.user_metadata?.avatar_url ??
@@ -95,6 +113,16 @@ export default function ProfilePage() {
                   {repSchool ? ` · ${repSchool}` : null}
                 </span>
               )}
+              {!isRep && repStatus === "pending" && (
+                <span className="inline-flex items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800">
+                  Rep request pending
+                </span>
+              )}
+              {isAdmin && (
+                <span className="inline-flex items-center rounded-full bg-violet-100 px-2.5 py-0.5 text-xs font-semibold text-violet-800">
+                  Admin
+                </span>
+              )}
             </div>
             <p className="text-muted-foreground">{profileDummy.handle}</p>
           </div>
@@ -125,7 +153,7 @@ export default function ProfilePage() {
               <InfoRow label="Email" value={currentUser.email ?? "—"} />
               <InfoRow
                 label="University"
-                value={meta?.university ?? profileDummy.info.university}
+                value={profile?.university ?? meta?.university ?? profileDummy.info.university}
               />
               <InfoRow label="Major" value={meta?.major ?? profileDummy.info.major} />
               <InfoRow

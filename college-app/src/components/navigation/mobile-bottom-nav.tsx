@@ -5,12 +5,21 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { appNavItems, isNavItemActive } from "@/lib/navigation";
 
+const mobileHrefs = new Set([
+  "/campus",
+  "/events",
+  "/messages",
+  "/entertainment",
+  "/profile",
+]);
+
 export function MobileBottomNav() {
   const pathname = usePathname();
+  const items = appNavItems.filter((item) => mobileHrefs.has(item.href));
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 flex border-t border-border bg-background/95 backdrop-blur-md md:hidden">
-      {appNavItems.map((item) => {
+      {items.map((item) => {
         const active = isNavItemActive(pathname, item);
         const Icon = item.icon;
 
